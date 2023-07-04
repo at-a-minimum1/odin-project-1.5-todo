@@ -1,0 +1,24 @@
+{
+  "name": "odin-project-1.5-todo",
+  "version": "1.0.0",
+  "description": "This is my second attempt at the Odin Project Todo application. The previous attempt was first a failed attempt because I was using custom elements for my card components and then a failed attempt since I was using maps to store the values. This version will use a simple array and local storage will be implemented earlier in the dev process.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/at-a-minimum1/odin-project-1.5-todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/at-a-minimum1/odin-project-1.5-todo/issues"
+  },
+  "homepage": "https://github.com/at-a-minimum1/odin-project-1.5-todo#readme",
+  "devDependencies": {
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
