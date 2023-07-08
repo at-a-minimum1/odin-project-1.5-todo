@@ -7,3 +7,20 @@
 	vertical-align: baseline;
 	box-sizing: border-box;
 }
+.desktop-wrapper {
+	display: grid;
+	grid-template-columns: 0.25fr 1fr;
+}
+.navigation-wrap {
+	background-color: antiquewhite;
+	grid-column: span 2;
+}
+
+.side-panel-wrapper {
+	display: flex;
+	flex-direction: column;
+	border: solid red 2px;
+	background-color: azure;
+	/* height: 100%; */
+	/* width: 40%; */
+}

@@ -4,20 +4,42 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>The Odin Todo App</title>
+		<link rel="stylesheet" href="./styles.css" />
 	</head>
 	<body>
 		<div class="desktop-wrapper">
 			<nav class="navigation-wrap">
 				<!-- Avatar, different projects here -->
+				Navigation
 			</nav>
 			<div class="side-panel-wrapper">
 				<!-- Form elements go here -->
-				<div class="button-wrapper">
-					<!-- Button elements go here. -->
-				</div>
+				<form id="task-form">
+					<label for="task-title">Task Title:</label>
+					<input
+						type="text"
+						id="task-title"
+						placeholder="Enter task title"
+					/>
+
+					<label for="task-due-date">Due Date:</label>
+					<input type="date" id="task-due-date" />
+
+					<label for="task-priority">Priority:</label>
+					<select id="task-priority">
+						<option value="low">Low</option>
+						<option value="medium">Medium</option>
+						<option value="high">High</option>
+					</select>
+
+					<div class="button-wrapper">
+						<button type="submit" id="add-task">Add Task</button>
+					</div>
+				</form>
 			</div>
 			<div class="main-panel-wrapper">
 				<!-- Tasks will be displayed here -->
+				Hello World
 			</div>
 		</div>
 		<script src="main.js"></script>
