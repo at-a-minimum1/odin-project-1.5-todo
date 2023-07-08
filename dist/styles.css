@@ -10,6 +10,8 @@
 .desktop-wrapper {
 	display: grid;
 	grid-template-columns: 0.25fr 1fr;
+	grid-template-rows: 100px 1fr;
+	height: 100vh;
 }
 .navigation-wrap {
 	background-color: antiquewhite;
