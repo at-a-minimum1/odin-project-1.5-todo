@@ -1,4 +1,4 @@
-// import { updateData } from "../modules/dom/domControl";
+import { updateData } from "../modules/dom/domControl";
 
 export function saveData(key, value) {
 	let dataArray = JSON.parse(localStorage.getItem(key)) || [];
