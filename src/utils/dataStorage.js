@@ -9,5 +9,6 @@ export function saveData(key, value) {
 
 export function loadData(key) {
 	const dataArray = JSON.parse(localStorage.getItem(key)) || [];
-	updateData(dataArray);
+	return dataArray || [];
+	// updateData(dataArray);
 }
