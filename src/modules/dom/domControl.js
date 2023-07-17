@@ -25,7 +25,45 @@ export function addToMainPanel(task) {
 }
 
 export function updateData(array) {
-	array.forEach((element) => {
-		addToMainPanel(element);
+	array.forEach((taskList) => {
+		taskList.forEach((element) => {
+			addToMainPanel(element);
+		});
 	});
+
+	// array.forEach((element) => {
+	// 	addToMainPanel(element);
+	// });
 }
+
+export function addToProjectList(taskList) {
+	const projectDropDown = document.getElementById("project-list");
+	const projectTitle = taskList.title;
+	const projectValue = "project-" + projectDropDown.options.length;
+	// console.log(projectValue + ": " + projectTitle);
+	const newOption = document.createElement("option");
+	newOption.value = projectValue;
+	newOption.textContent = projectTitle;
+	projectDropDown.appendChild(newOption);
+}
+
+// CHATGPT solution
+// export function addToProjectList(taskList) {
+//   const projectDropDown = document.getElementById("project-list");
+//   const projectTitle = taskList.title;
+
+//   // Determine the next available project number
+//   const nextProjectNumber = projectDropDown.options.length;
+
+//   // Create a new option element
+//   const newOption = document.createElement("option");
+
+//   // Set the value attribute
+//   newOption.value = "project-" + nextProjectNumber;
+
+//   // Set the display text
+//   newOption.textContent = projectTitle;
+
+//   // Append the new option to the select dropdown
+//   projectDropDown.appendChild(newOption);
+// }

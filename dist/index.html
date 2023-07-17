@@ -13,14 +13,22 @@
 				Navigation
 			</nav>
 			<div class="side-panel-wrapper">
+				<h3>--Home--</h3>
+				<!-- <button>Inbox</button> -->
+				<button>Today</button>
+				<button>Next Week</button>
+				<button>Important</button>
+				<h3>--Projects--</h3>
+				<div class="project-list-wrapper">
+					<select id="project-list">
+						<option value="project-0">All tasks (project 0)</option>
+						<option value="project-1">Project 1</option>
+					</select>
+				</div>
 				<!-- Form elements go here -->
 				<form id="task-form">
 					<label for="task-title">Task Title:</label>
-					<input
-						type="text"
-						id="task-title"
-						placeholder="Enter task title"
-					/>
+					<input type="text" id="task-title" placeholder="Enter task title" />
 
 					<label for="task-due-date">Due Date:</label>
 					<input type="date" id="task-due-date" />
@@ -36,10 +44,27 @@
 						<button type="submit" id="add-task">Add Task</button>
 					</div>
 				</form>
+				<h3>--Projects--</h3>
+
+				<form id="project-form">
+					<label for="project-title">Project Title</label>
+					<input
+						type="text"
+						id="project-title"
+						placeholder="Enter project title"
+					/>
+					<button type="submit" id="add-project">Add Project</button>
+				</form>
 			</div>
 			<div class="main-panel-wrapper" id="main-panel-wrapper">
+				<!-- <div class="project-list-wrapper">
+					<select id="project-list">
+						<option value="project-0">All tasks (project 0)</option>
+						<option value="project-1">Project 1</option>
+						<option value="project-2">Project 2</option>
+					</select>
+				</div> -->
 				<!-- Tasks will be displayed here -->
-				Hello World
 			</div>
 		</div>
 		<script src="main.js"></script>

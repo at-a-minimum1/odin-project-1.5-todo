@@ -7,6 +7,15 @@
 	vertical-align: baseline;
 	box-sizing: border-box;
 }
+
+button {
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: darkturquoise;
+}
+
 .desktop-wrapper {
 	display: grid;
 	grid-template-columns: 0.25fr 1fr;
@@ -23,4 +32,23 @@
 	flex-direction: column;
 	border: solid red 2px;
 	background-color: azure;
+}
+.side-panel-wrapper > * {
+	margin-bottom: 1px;
+}
+
+#task-form {
+	display: flex;
+	flex-direction: column;
+	border: solid black;
+}
+
+.project-list-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.card-wrapper {
+	border: solid rgb(124, 124, 124);
+	margin-bottom: 2px;
 }

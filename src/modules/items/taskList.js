@@ -1,5 +1,6 @@
-export class TaskList(){
-    constructor(array){
-        this.array = array || [];
-    }
+export class TaskList {
+	constructor(title, array) {
+		this.title = title;
+		this.array = array || [];
+	}
 }
