@@ -1,4 +1,4 @@
-import { format, today } from "date-fns";
+import { format } from "date-fns";
 
 export function getFormData() {
 	const taskTitle = document.getElementById("task-title").value || "Test Title";
