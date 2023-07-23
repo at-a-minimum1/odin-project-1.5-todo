@@ -3,9 +3,9 @@ import { saveData, loadData } from "./dataStorage";
 import { TaskList } from "../modules/items/taskList";
 import * as dom from "../modules/dom/domControl";
 
-let allTasks = new TaskList("project-0", []);
+let project0 = new TaskList("project-0", []);
 let project1 = new TaskList("project-1", []);
-let projectData = [allTasks, project1];
+let projectData = [project0, project1];
 
 export function getProjectData() {
 	return projectData;
@@ -23,7 +23,6 @@ export function instantiateLocalStorage() {
 export function addTask(formData) {
 	let newTask = new Task(formData.title, formData.date, formData.priority);
 	let currentProject = getCurrentProject();
-	// TODO delete tempProject and put the current project there.
 	let tempProject = currentProject.array;
 	tempProject.push(newTask);
 	currentProject.array = tempProject;
@@ -31,6 +30,14 @@ export function addTask(formData) {
 	saveData("project-data", projectData);
 
 	dom.addToMainPanel(newTask);
+}
+
+export function removeTask() {
+	// logic for removing task
+}
+
+export function sortTasks() {
+	// Logic for sorting tasks
 }
 
 export function getCurrentProject() {
@@ -53,26 +60,23 @@ export function getProjectFromData(project) {
 	return dataProject;
 }
 
-export function addToProjectData(task, taskList) {
-	const dataTaskList = getProjectFromData(taskList);
-	allTasks.array.push(task);
-}
-
 export function addProject() {
-	const projectTitle = "project-" + projectData.length;
+	const projectTitle = document.getElementById("project-title").value;
 	const newTaskList = new TaskList(projectTitle, []);
 
-	projectData.push(newTaskList);
-	saveData("project-data", projectData);
+	let existingProjectName = false;
+	for (const project of projectData) {
+		if (project.title === projectTitle) {
+			existingProjectName = true;
+			break;
+		}
+	}
+	if (!existingProjectName) {
+		projectData.push(newTaskList);
+		saveData("project-data", projectData);
+	} else {
+		console.error(
+			"Project title already exists. Please choose a different title!"
+		);
+	}
 }
-
-// export function addToProjectList(taskList) {
-// 	const projectDropDown = document.getElementById("project-list");
-// 	const projectTitle = taskList.title;
-// 	const projectValue = "project-" + projectDropDown.options.length;
-// 	// console.log(projectValue + ": " + projectTitle);
-// 	const newOption = document.createElement("option");
-// 	newOption.value = projectValue;
-// 	newOption.textContent = projectTitle;
-// 	projectDropDown.appendChild(newOption);
-// }

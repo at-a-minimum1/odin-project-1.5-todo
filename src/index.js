@@ -4,8 +4,9 @@ import * as data from "./utils/data";
 window.onload = () => {
 	data.instantiateLocalStorage();
 	const projectData = data.getProjectData();
-	dom.instantiateProjectList(projectData); //TODO uncommment out line to populate list
-	dom.updateData(projectData);
+	const startingProject = projectData[0].array;
+	dom.instantiateProjectList(projectData);
+	dom.updateMainPanel(startingProject);
 };
 
 const addTaskButton = document.getElementById("add-task");
@@ -13,7 +14,6 @@ addTaskButton.addEventListener("click", (event) => {
 	event.preventDefault();
 	const formData = dom.getFormData();
 	data.addTask(formData);
-	// dom.addToMainPanel();
 });
 
 const addProjectButton = document.getElementById("add-project");
@@ -32,5 +32,7 @@ document.addEventListener("keydown", function (event) {
 
 const dropDownProject = document.getElementById("project-list");
 dropDownProject.addEventListener("change", (event) => {
-	data.getCurrentProject();
+	let currentProject = data.getCurrentProject();
+	dom.clearMainPanel();
+	dom.updateMainPanel(currentProject.array);
 });
