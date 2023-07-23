@@ -1,6 +1,5 @@
 // BEM stands for Block Element Modifier, and it is a popular naming convention and methodology for writing maintainable and scalable CSS code. BEM helps create a clear and understandable class naming structure by following a specific pattern.
 
-
 export function createCard(title, date, priority) {
 	// Block
 	const cardWrap = document.createElement("div");

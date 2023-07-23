@@ -36,3 +36,9 @@ dropDownProject.addEventListener("change", (event) => {
 	dom.clearMainPanel();
 	dom.updateMainPanel(currentProject.array);
 });
+
+const resultsPanel = document.getElementById("main-panel-wrapper");
+resultsPanel.addEventListener('click', (event) => {
+	// If event matches whatever do something
+	if(event.matches ...)
+});
