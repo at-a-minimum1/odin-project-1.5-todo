@@ -26,19 +26,15 @@ export function addToMainPanel(task) {
 
 export function updateData(array) {
 	array.forEach((taskList) => {
-		taskList.forEach((element) => {
+		taskList.array.forEach((element) => {
 			addToMainPanel(element);
 		});
 	});
-
-	// array.forEach((element) => {
-	// 	addToMainPanel(element);
-	// });
 }
 
-export function addToProjectList(taskList) {
+export function addToProjectList() {
 	const projectDropDown = document.getElementById("project-list");
-	const projectTitle = taskList.title;
+	const projectTitle = document.getElementById("project-title").value;
 	const projectValue = "project-" + projectDropDown.options.length;
 	// console.log(projectValue + ": " + projectTitle);
 	const newOption = document.createElement("option");
@@ -47,23 +43,16 @@ export function addToProjectList(taskList) {
 	projectDropDown.appendChild(newOption);
 }
 
-// CHATGPT solution
-// export function addToProjectList(taskList) {
-//   const projectDropDown = document.getElementById("project-list");
-//   const projectTitle = taskList.title;
+export function instantiateProjectList(projectData) {
+	// Get the projectDropDown values and then add more projects to the list with the above function? Maybe add a parameter that takes in the data from the data class?
+	projectData.forEach((element) => {
+		// TODO change the value to a position in the array rather than the title.
+		// TODO or not?
+		const projectDropDown = document.getElementById("project-list");
 
-//   // Determine the next available project number
-//   const nextProjectNumber = projectDropDown.options.length;
-
-//   // Create a new option element
-//   const newOption = document.createElement("option");
-
-//   // Set the value attribute
-//   newOption.value = "project-" + nextProjectNumber;
-
-//   // Set the display text
-//   newOption.textContent = projectTitle;
-
-//   // Append the new option to the select dropdown
-//   projectDropDown.appendChild(newOption);
-// }
+		const newOption = document.createElement("option");
+		newOption.value = element.title;
+		newOption.textContent = element.title;
+		projectDropDown.appendChild(newOption);
+	});
+}
