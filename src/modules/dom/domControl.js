@@ -19,9 +19,12 @@ export function addToMainPanel(task) {
 	// Append the items in a card element
 	const cardWrap = document.createElement("div");
 	cardWrap.classList.add("card-wrapper");
+	// Add the dataset taskId to the card wrap
+	cardWrap.dataset.taskId = task.id;
 
 	const deleteButton = document.createElement("button");
 	deleteButton.textContent = "Delete";
+	deleteButton.classList.add("delete-button");
 
 	cardWrap.append(task.title);
 	cardWrap.append(formattedDate);

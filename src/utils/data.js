@@ -32,8 +32,26 @@ export function addTask(formData) {
 	dom.addToMainPanel(newTask);
 }
 
-export function removeTask() {
+export function removeTask(taskId) {
 	// logic for removing task
+	const selectedTaskList = projectData.find((taskList) =>
+		taskList.array.find((task) => task.id === taskId)
+	);
+	const selectedTask = selectedTaskList.array.find(
+		(task) => task.id === taskId
+	);
+	console.log(selectedTask);
+	console.log(projectData);
+}
+
+export function getTaskById(taskId) {
+	const selectedTaskList = projectData.find((taskList) =>
+		taskList.array.find((task) => task.id === taskId)
+	);
+	const selectedTask = selectedTaskList.array.find(
+		(task) => task.id === taskId
+	);
+	return selectedTask;
 }
 
 export function sortTasks() {

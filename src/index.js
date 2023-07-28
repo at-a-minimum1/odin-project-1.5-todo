@@ -38,7 +38,12 @@ dropDownProject.addEventListener("change", (event) => {
 });
 
 const resultsPanel = document.getElementById("main-panel-wrapper");
-resultsPanel.addEventListener('click', (event) => {
+resultsPanel.addEventListener("click", (event) => {
 	// If event matches whatever do something
-	if(event.matches ...)
+	if (event.target.matches(".delete-button")) {
+		console.log("delete button pressed.");
+		const taskId = event.target.closest(".card-wrapper").dataset.taskId;
+		data.removeTask(taskId);
+		console.log(taskId);
+	}
 });
