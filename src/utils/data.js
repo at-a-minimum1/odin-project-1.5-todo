@@ -34,25 +34,40 @@ export function addTask(formData) {
 
 export function removeTask(taskId) {
 	// logic for removing task
-	const selectedTaskList = projectData.find((taskList) =>
-		taskList.array.find((task) => task.id === taskId)
-	);
-	const selectedTask = selectedTaskList.array.find(
-		(task) => task.id === taskId
-	);
-	console.log(selectedTask);
-	console.log(projectData);
+	const selectedTask = getTaskById(taskId);
+	const selectedTaskList = getTaskListById(taskId);
+	const index = selectedTaskList.indexOf(selectedTask);
+	selectedTaskList.splice(index, 1);
 }
 
-export function getTaskById(taskId) {
-	const selectedTaskList = projectData.find((taskList) =>
-		taskList.array.find((task) => task.id === taskId)
-	);
-	const selectedTask = selectedTaskList.array.find(
-		(task) => task.id === taskId
-	);
-	return selectedTask;
+export function getTaskAndListById(taskId) {
+	for (const taskList of projectData) {
+		const taskIndex = taskList.array.findIndex((task) => task.id === taskId);
+		if (taskIndex !== -1) {
+			const task = taskList.array.find((task) => task.id === taskId);
+			return { taskList, taskIndex, task };
+		}
+	}
+	return { taskList: null, taskIndex: -1, task: null };
 }
+
+// TODO delete the commented out functions once the above function proves capable
+// export function getTaskById(taskId) {
+// 	const selectedTaskList = projectData.find((taskList) =>
+// 		taskList.array.find((task) => task.id === taskId)
+// 	);
+// 	const selectedTask = selectedTaskList.array.find(
+// 		(task) => task.id === taskId
+// 	);
+// 	return selectedTask;
+// }
+
+// export function getTaskListById(taskId) {
+// 	const selectedTaskList = projectData.find((taskList) =>
+// 		taskList.array.find((task) => task.id === taskId)
+// 	);
+// 	return selectedTaskList;
+// }
 
 export function sortTasks() {
 	// Logic for sorting tasks
