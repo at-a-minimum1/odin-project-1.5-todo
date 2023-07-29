@@ -56,7 +56,9 @@ export function clearMainPanel() {
 export function addToProjectList() {
 	const projectDropDown = document.getElementById("project-list");
 	const projectTitle = document.getElementById("project-title").value;
-	const projectValue = "project-" + projectDropDown.options.length;
+	// const projectValue = "project-" + projectDropDown.options.length;
+	// TODO Either delete the above variable or delete the one below and change the way the value is saved in the data object. Probably just delete the above variable.
+	const projectValue = projectTitle;
 
 	const existingProjectsArray = Array.from(projectDropDown.options).map(
 		(option) => option.textContent
@@ -74,10 +76,7 @@ export function addToProjectList() {
 }
 
 export function instantiateProjectList(projectData) {
-	// Get the projectDropDown values and then add more projects to the list with the above function? Maybe add a parameter that takes in the data from the data class?
 	projectData.forEach((element) => {
-		// TODO change the value to a position in the array rather than the title.
-		// TODO or not?
 		const projectDropDown = document.getElementById("project-list");
 
 		const newOption = document.createElement("option");

@@ -23,6 +23,8 @@ export function instantiateLocalStorage() {
 export function addTask(formData) {
 	let newTask = new Task(formData.title, formData.date, formData.priority);
 	let currentProject = getCurrentProject();
+	console.log(currentProject);
+	console.log(typeof currentProject);
 	let tempProject = currentProject.array;
 	tempProject.push(newTask);
 	currentProject.array = tempProject;
@@ -33,11 +35,10 @@ export function addTask(formData) {
 }
 
 export function removeTask(taskId) {
-	// logic for removing task
-	const selectedTask = getTaskById(taskId);
-	const selectedTaskList = getTaskListById(taskId);
-	const index = selectedTaskList.indexOf(selectedTask);
-	selectedTaskList.splice(index, 1);
+	const { taskList, taskIndex, task } = getTaskAndListById(taskId);
+
+	taskList.array.splice(taskIndex, 1);
+	saveData("project-data", projectData);
 }
 
 export function getTaskAndListById(taskId) {
@@ -50,24 +51,6 @@ export function getTaskAndListById(taskId) {
 	}
 	return { taskList: null, taskIndex: -1, task: null };
 }
-
-// TODO delete the commented out functions once the above function proves capable
-// export function getTaskById(taskId) {
-// 	const selectedTaskList = projectData.find((taskList) =>
-// 		taskList.array.find((task) => task.id === taskId)
-// 	);
-// 	const selectedTask = selectedTaskList.array.find(
-// 		(task) => task.id === taskId
-// 	);
-// 	return selectedTask;
-// }
-
-// export function getTaskListById(taskId) {
-// 	const selectedTaskList = projectData.find((taskList) =>
-// 		taskList.array.find((task) => task.id === taskId)
-// 	);
-// 	return selectedTaskList;
-// }
 
 export function sortTasks() {
 	// Logic for sorting tasks

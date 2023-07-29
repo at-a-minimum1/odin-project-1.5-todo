@@ -41,9 +41,13 @@ const resultsPanel = document.getElementById("main-panel-wrapper");
 resultsPanel.addEventListener("click", (event) => {
 	// If event matches whatever do something
 	if (event.target.matches(".delete-button")) {
-		console.log("delete button pressed.");
+		let currentProject = data.getCurrentProject();
 		const taskId = event.target.closest(".card-wrapper").dataset.taskId;
 		data.removeTask(taskId);
-		console.log(taskId);
+		dom.clearMainPanel();
+		dom.updateMainPanel(currentProject.array);
+		// console.log(taskId);
 	}
 });
+
+// function updateDomAndData() {}
