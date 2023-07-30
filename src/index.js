@@ -34,8 +34,6 @@ sortDropdown.addEventListener("click", (event) => {
 	// Toggle hidden elements
 	const sortOptions = document.getElementById("sort-options");
 	dom.toggleHidden(sortOptions);
-	console.log("Sort dropdown works");
-	// console.log()
 });
 
 // TODO Maybe use hover effects to reveal and hide the elements.
@@ -44,26 +42,24 @@ sortDropdown.addEventListener("click", (event) => {
 // 	dom.toggleHidden(sortOptions);
 // });
 
-const sortDate = document.getElementById("sort-date");
-sortDate.addEventListener("click", (event) => {
-	console.log("sort date works");
-	// Logic for sorting by date
-});
-const sortPriority = document.getElementById("sort-priority");
-sortPriority.addEventListener("click", (event) => {
-	console.log("sort priority works");
-	// Logic for sort priority here
-});
-const sortTitle = document.getElementById("sort-title");
-sortTitle.addEventListener("click", (event) => {
-	console.log("sort title works");
-	// Logic for sorting by title here
+function handleSortClick(sortBy) {
 	let currentProject = data.getCurrentProject();
-	let sortedArray = data.sortTasks(currentProject, "title");
-	console.log(currentProject);
-	console.log(sortedArray);
+	let sortedArray = data.sortTasks(currentProject, sortBy);
 	dom.clearMainPanel();
 	dom.updateMainPanel(sortedArray);
+}
+
+const sortDate = document.getElementById("sort-date");
+sortDate.addEventListener("click", () => {
+	handleSortClick("date");
+});
+const sortPriority = document.getElementById("sort-priority");
+sortPriority.addEventListener("click", () => {
+	handleSortClick("priority");
+});
+const sortTitle = document.getElementById("sort-title");
+sortTitle.addEventListener("click", () => {
+	handleSortClick("title");
 });
 
 // Event delegations

@@ -61,6 +61,12 @@ export function getTaskAndListById(taskId) {
 }
 
 export function sortTasks(taskList, sortBy) {
+	const priorityMap = {
+		high: 1,
+		medium: 2,
+		low: 3,
+	};
+
 	let tempArray = [...taskList.array];
 	// Logic for sorting by title
 	if (sortBy == "title") {
@@ -72,9 +78,19 @@ export function sortTasks(taskList, sortBy) {
 	}
 	// Logic for sorting by date
 	if (sortBy == "date") {
+		tempArray.sort((task1, task2) => {
+			if (task1.date < task2.date) return -1;
+			if (task1.date > task2.date) return 1;
+			return 0;
+		});
 	}
 	// Logic for sorting by priority
 	if (sortBy == "priority") {
+		tempArray.sort((task1, task2) => {
+			const priority1 = priorityMap[task1.priority];
+			const priority2 = priorityMap[task2.priority];
+			return priority1 - priority2;
+		});
 	}
 	return tempArray;
 }
