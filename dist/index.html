@@ -14,16 +14,12 @@
 			</nav>
 			<div class="side-panel-wrapper">
 				<h3>--Home--</h3>
-				<!-- <button>Inbox</button> -->
 				<button>Today</button>
 				<button>Next Week</button>
 				<button>Important</button>
 				<h3>--Projects--</h3>
 				<div class="project-list-wrapper">
-					<select id="project-list">
-						<!-- <option value="project-0">Project 0</option> -->
-						<!-- <option value="project-1">Project 1</option> -->
-					</select>
+					<select id="project-list"></select>
 				</div>
 				<!-- Form elements go here -->
 				<form id="task-form">
@@ -55,6 +51,17 @@
 					/>
 					<button type="submit" id="add-project">Add Project</button>
 				</form>
+			</div>
+			<div class="project-display">
+				<h1 id="project-header">Current Project</h1>
+				<div class="sort-wrapper">
+					<button id="sort-dropdown">Sort</button>
+					<div class="sort-options hide" id="sort-options">
+						<button id="sort-date">Date</button>
+						<button id="sort-priority">Priority</button>
+						<button id="sort-title">Title</button>
+					</div>
+				</div>
 			</div>
 			<div class="main-panel-wrapper" id="main-panel-wrapper">
 				<!-- Tasks will be displayed here -->

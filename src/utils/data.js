@@ -11,6 +11,14 @@ export function getProjectData() {
 	return projectData;
 }
 
+export function getAllTasks() {
+	let allTasks = [];
+	for (const project of projectData) {
+		allTasks.push(...project.array);
+	}
+	return allTasks;
+}
+
 export function instantiateLocalStorage() {
 	// Check if local storage is empty
 	if (localStorage.length === 0) {
@@ -52,8 +60,23 @@ export function getTaskAndListById(taskId) {
 	return { taskList: null, taskIndex: -1, task: null };
 }
 
-export function sortTasks() {
-	// Logic for sorting tasks
+export function sortTasks(taskList, sortBy) {
+	let tempArray = [...taskList.array];
+	// Logic for sorting by title
+	if (sortBy == "title") {
+		tempArray.sort((task1, task2) => {
+			if (task1.title < task2.title) return -1;
+			if (task1.title > task2.title) return 1;
+			return 0;
+		});
+	}
+	// Logic for sorting by date
+	if (sortBy == "date") {
+	}
+	// Logic for sorting by priority
+	if (sortBy == "priority") {
+	}
+	return tempArray;
 }
 
 export function getCurrentProject() {

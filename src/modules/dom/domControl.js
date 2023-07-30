@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { TaskList } from "../items/taskList";
 
 export function getFormData() {
 	const taskTitle = document.getElementById("task-title").value || "Test Title";
@@ -34,18 +35,26 @@ export function addToMainPanel(task) {
 	mainPanel.append(cardWrap);
 }
 
-export function instaniateMainPanel(array) {
-	array.forEach((taskList) => {
+export function instaniateMainPanel(taskData) {
+	taskData.forEach((taskList) => {
 		taskList.array.forEach((element) => {
 			addToMainPanel(element);
 		});
 	});
 }
 
-export function updateMainPanel(array) {
-	array.forEach((element) => {
-		addToMainPanel(element);
-	});
+export function updateMainPanel(taskList) {
+	if (Array.isArray(taskList)) {
+		taskList.forEach((element) => {
+			addToMainPanel(element);
+		});
+	} else {
+		const projectDisplay = document.getElementById("project-header");
+		projectDisplay.textContent = taskList.title;
+		taskList.array.forEach((element) => {
+			addToMainPanel(element);
+		});
+	}
 }
 
 export function clearMainPanel() {
@@ -56,8 +65,6 @@ export function clearMainPanel() {
 export function addToProjectList() {
 	const projectDropDown = document.getElementById("project-list");
 	const projectTitle = document.getElementById("project-title").value;
-	// const projectValue = "project-" + projectDropDown.options.length;
-	// TODO Either delete the above variable or delete the one below and change the way the value is saved in the data object. Probably just delete the above variable.
 	const projectValue = projectTitle;
 
 	const existingProjectsArray = Array.from(projectDropDown.options).map(
@@ -84,4 +91,8 @@ export function instantiateProjectList(projectData) {
 		newOption.textContent = element.title;
 		projectDropDown.appendChild(newOption);
 	});
+}
+
+export function toggleHidden(html) {
+	html.classList.toggle("hide");
 }
