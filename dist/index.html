@@ -14,9 +14,9 @@
 			</nav>
 			<div class="side-panel-wrapper">
 				<h3>--Home--</h3>
-				<button>Today</button>
-				<button>Next Week</button>
-				<button>Important</button>
+				<button id="today-button">Today</button>
+				<button id="next-week-button">Next Week</button>
+				<button id="important-button">Important</button>
 				<h3>--Projects--</h3>
 				<div class="project-list-wrapper">
 					<select id="project-list"></select>
@@ -57,9 +57,15 @@
 				<div class="sort-wrapper">
 					<button id="sort-dropdown">Sort</button>
 					<div class="sort-options hide" id="sort-options">
-						<button id="sort-date">Date</button>
-						<button id="sort-priority">Priority</button>
-						<button id="sort-title">Title</button>
+						<button class="sort-button" id="sort-date" data-sort="date">
+							Date
+						</button>
+						<button class="sort-button" id="sort-priority" data-sort="priority">
+							Priority
+						</button>
+						<button class="sort-button" id="sort-title" data-sort="title">
+							Title
+						</button>
 					</div>
 				</div>
 			</div>

@@ -49,8 +49,9 @@ export function updateMainPanel(taskList) {
 			addToMainPanel(element);
 		});
 	} else {
-		const projectDisplay = document.getElementById("project-header");
-		projectDisplay.textContent = taskList.title;
+		// const projectDisplay = document.getElementById("project-header");
+		// projectDisplay.textContent = taskList.title;
+		updateProjectHeader(taskList.title);
 		taskList.array.forEach((element) => {
 			addToMainPanel(element);
 		});
@@ -60,6 +61,11 @@ export function updateMainPanel(taskList) {
 export function clearMainPanel() {
 	const mainPanel = document.getElementById("main-panel-wrapper");
 	mainPanel.innerHTML = "";
+}
+
+export function updateProjectHeader(projectName) {
+	const projectDisplay = document.getElementById("project-header");
+	projectDisplay.textContent = projectName;
 }
 
 export function addToProjectList() {

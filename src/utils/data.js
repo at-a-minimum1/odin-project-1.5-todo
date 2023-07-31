@@ -2,6 +2,7 @@ import { Task } from "../modules/items/task";
 import { saveData, loadData } from "./dataStorage";
 import { TaskList } from "../modules/items/taskList";
 import * as dom from "../modules/dom/domControl";
+import { isToday, isWithinInterval, addWeeks } from "date-fns";
 
 let project0 = new TaskList("project-0", []);
 let project1 = new TaskList("project-1", []);
@@ -93,6 +94,24 @@ export function sortTasks(taskList, sortBy) {
 		});
 	}
 	return tempArray;
+}
+
+export function filterTasks(filterBy) {
+	const allTasks = getAllTasks();
+	const today = new Date();
+	const nextWeek = addWeeks(today, 1);
+	switch (filterBy) {
+		case "Today":
+			return allTasks.filter((task) => isToday(new Date(task.date)));
+		case "Next Week":
+			return allTasks.filter((task) =>
+				isWithinInterval(new Date(task.date), { start: today, end: nextWeek })
+			);
+		case "Important":
+			return allTasks.filter((task) => task.priority === "high");
+		default:
+			return allTasks;
+	}
 }
 
 export function getCurrentProject() {

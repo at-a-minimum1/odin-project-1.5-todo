@@ -8,6 +8,13 @@ window.onload = () => {
 	dom.updateMainPanel(projectData[0]);
 };
 
+const projectDropdown = document.getElementById("project-list");
+projectDropdown.addEventListener("change", (event) => {
+	let currentProject = data.getCurrentProject();
+	dom.clearMainPanel();
+	dom.updateMainPanel(currentProject);
+});
+
 const addTaskButton = document.getElementById("add-task");
 addTaskButton.addEventListener("click", (event) => {
 	event.preventDefault();
@@ -22,25 +29,39 @@ addProjectButton.addEventListener("click", (event) => {
 	dom.addToProjectList();
 });
 
-const dropDownProject = document.getElementById("project-list");
-dropDownProject.addEventListener("change", (event) => {
-	let currentProject = data.getCurrentProject();
-	dom.clearMainPanel();
-	dom.updateMainPanel(currentProject);
-});
-
-const sortDropdown = document.getElementById("sort-dropdown");
-sortDropdown.addEventListener("click", (event) => {
+const sortDropdownButton = document.getElementById("sort-dropdown");
+sortDropdownButton.addEventListener("click", (event) => {
 	// Toggle hidden elements
 	const sortOptions = document.getElementById("sort-options");
 	dom.toggleHidden(sortOptions);
 });
 
+const todayButton = document.getElementById("today-button");
+todayButton.addEventListener("click", () => {
+	handleFilterClick("Today");
+});
+
+const nextWeekButton = document.getElementById("next-week-button");
+nextWeekButton.addEventListener("click", () => {
+	handleFilterClick("Next Week");
+});
+
+const importantButton = document.getElementById("important-button");
+importantButton.addEventListener("click", () => {
+	handleFilterClick("Important");
+});
 // TODO Maybe use hover effects to reveal and hide the elements.
 // sortDropdown.addEventListener("pointerleave", () => {
 // 	const sortOptions = document.getElementById("sort-options");
 // 	dom.toggleHidden(sortOptions);
 // });
+
+function handleFilterClick(fliterBy) {
+	let filteredTasks = data.filterTasks(fliterBy);
+	dom.updateProjectHeader(fliterBy);
+	dom.clearMainPanel();
+	dom.updateMainPanel(filteredTasks);
+}
 
 function handleSortClick(sortBy) {
 	let currentProject = data.getCurrentProject();
@@ -48,18 +69,12 @@ function handleSortClick(sortBy) {
 	dom.clearMainPanel();
 	dom.updateMainPanel(sortedArray);
 }
-
-const sortDate = document.getElementById("sort-date");
-sortDate.addEventListener("click", () => {
-	handleSortClick("date");
-});
-const sortPriority = document.getElementById("sort-priority");
-sortPriority.addEventListener("click", () => {
-	handleSortClick("priority");
-});
-const sortTitle = document.getElementById("sort-title");
-sortTitle.addEventListener("click", () => {
-	handleSortClick("title");
+const sortButtons = document.querySelectorAll(".sort-button");
+sortButtons.forEach((button) => {
+	button.addEventListener("click", () => {
+		const sortBy = button.dataset.sort;
+		handleSortClick(sortBy);
+	});
 });
 
 // Event delegations
