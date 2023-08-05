@@ -7,7 +7,7 @@
 	vertical-align: baseline;
 	box-sizing: border-box;
 }
-/* Elements */
+/* Primitive Elements */
 button {
 	cursor: pointer;
 }
@@ -16,59 +16,63 @@ button:hover {
 	background-color: darkturquoise;
 }
 /* Utility Classes*/
-.hide>*{
+
+.hide > * {
 	display: none;
 }
-/* Wrappers */
+/* Blocks, elements, modifiers */
 .desktop-wrapper {
-	display: grid;
-	grid-template-columns: 0.25fr 1fr;
-	grid-template-rows: 100px 20px 1fr;
-	height: 100vh;
+	&__side-panel {
+	}
+	&__project-display {
+	}
+	&__main-panel {
+	}
 }
-.navigation-wrap {
-	background-color: antiquewhite;
-	grid-column: span 2;
-}
+.side-panel {
+	&__title {
+	}
+	&__button {
+	}
 
-.side-panel-wrapper {
-	display: flex;
-	flex-direction: column;
-	border: solid red 2px;
-	background-color: azure;
-	grid-row: span 2;
-}
-.side-panel-wrapper > * {
-	margin-bottom: 1px;
-}
+	&__header {
+	}
 
-#task-form {
-	display: flex;
-	flex-direction: column;
-	border: solid black;
-}
+	&__project-list-wrapper {
+	}
+	&__form {
+		&__label {
+		}
+		&__input {
+		}
+		&__select {
+			&__option {
+			}
+		}
+		&__button {
+		}
+	}
 
-.project-list-wrapper {
-	display: flex;
-	flex-direction: column;
-}
-
-.card-wrapper {
-	border: solid rgb(124, 124, 124);
-	margin-bottom: 2px;
+	&__button-wrapper {
+		&__button {
+		}
+	}
 }
 .project-display {
-	display: flex;
-	justify-content: space-between;
+	&__header {
+	}
+	&__sort-wrapper {
+		&__button {
+		}
+		&__sort-options {
+			&__button {
+			}
+			&__hidden {
+				display: none;
+			}
+			&__shown {
+				display: block;
+			}
+		}
+	}
 }
-/* Everything else */
-.sort-options {
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	left: 94%;
-	width: max-content;
-	/* left: 0; */
-	/* right: 100%; */
-}
-
