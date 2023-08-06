@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>The Odin Todo App</title>
+		<link rel="stylesheet" href="./styles.scss" />
+	</head>
+
+	<body>
+		<div class="desktop-wrapper">
+			<nav class="desktop-wrapper__navigation-wrap">
+				<!-- Avatar, different projects here -->
+				Navigation
+			</nav>
+			<div class="desktop-wrapper__side-panel">
+				<h3 class="side-panel__title">--Home--</h3>
+				<button id="today-button" class="side-panel__button">Today</button>
+				<button id="next-week-button" class="side-panel__button">
+					Next Week
+				</button>
+				<button id="important-button" class="side-panel__button">
+					Important
+				</button>
+				<h3 class="side-panel__header" class="side-panel__header">
+					--Projects--
+				</h3>
+				<div class="side-panel__project-list-wrapper">
+					<select
+						id="project-list"
+						class="project-list-wrapper__select"
+					></select>
+				</div>
+				<!-- Form elements go here -->
+				<form id="task-form" class="side-panel__form">
+					<label for="task-title" class="side-panel__form__label"
+						>Task Title:</label
+					>
+					<input
+						type="text"
+						id="task-title"
+						class="side-panel__form__input"
+						placeholder="Enter task title"
+					/>
+
+					<label for="task-due-date" class="side-panel__form__label"
+						>Due Date:</label
+					>
+					<input
+						type="date"
+						id="task-due-date"
+						class="side-panel__form__input"
+					/>
+
+					<label for="task-priority" class="side-panel__form__label"
+						>Priority:</label
+					>
+					<select id="task-priority" class="side-panel__form__select">
+						<option value="low" class="side-panel__form__select__option">
+							Low
+						</option>
+						<option value="medium" class="side-panel__form__select__option">
+							Medium
+						</option>
+						<option value="high" class="side-panel__form__select__option">
+							High
+						</option>
+						<!-- This is where I left off refactoring BEM -->
+					</select>
+
+					<div class="side-panel__button-wrapper">
+						<button
+							type="submit"
+							id="add-task"
+							class="side-panel__button-wrapper__button"
+						>
+							Add Task
+						</button>
+					</div>
+				</form>
+				<h3 class="side-panel__header">--Projects--</h3>
+
+				<form id="project-form" class="side-panel__project__form">
+					<label for="project-title" class="side-panel__project__form__label"
+						>Project Title</label
+					>
+					<input
+						type="text"
+						id="project-title"
+						class="side-panel__project__form__input"
+						placeholder="Enter project title"
+					/>
+					<button
+						type="submit"
+						id="add-project"
+						class="side-panel__project__form__button"
+					>
+						Add Project
+					</button>
+				</form>
+			</div>
+			<div class="desktop-wrapper__project-display">
+				<h1 id="project-header" class="project-display__header">
+					Current Project
+				</h1>
+				<div class="project-display__sort-wrapper">
+					<button
+						id="sort-dropdown"
+						class="project-display__sort-wrapper__button"
+					>
+						Sort
+					</button>
+					<div
+						class="project-display__sort-wrapper__sort-options--hidden"
+						id="sort-options"
+					>
+						<button
+							class="sort-wrapper__sort-options__button"
+							id="sort-date"
+							data-sort="date"
+						>
+							Date
+						</button>
+						<button
+							class="sort-wrapper__sort-options__button"
+							id="sort-priority"
+							data-sort="priority"
+						>
+							Priority
+						</button>
+						<button
+							class="sort-wrapper__sort-options__button"
+							id="sort-title"
+							data-sort="title"
+						>
+							Title
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="desktop-wrapper__main-panel" id="main-panel-wrapper">
+				<!-- Tasks will be displayed here -->
+			</div>
+		</div>
+		<script src="main.js"></script>
+	</body>
+</html>
