@@ -1,5 +1,6 @@
 import * as dom from "./modules/dom/domControl";
 import * as data from "./utils/data";
+import "./styles.scss";
 
 window.onload = () => {
 	data.instantiateLocalStorage();
