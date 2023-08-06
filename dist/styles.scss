@@ -1,0 +1,94 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+/* Primitive Elements */
+button {
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: darkturquoise;
+}
+/* Blocks, elements, modifiers */
+/* TODO implement Sass or Less to be able to nest the css components. The & will not work without it */
+// .desktop-wrapper__side-panel {
+// 	display: flex;
+// 	flex-direction: column;
+// 	border: solid red 2px;
+// 	background-color: azure;
+// 	grid-row: span 2;
+// }
+.desktop-wrapper {
+	display: grid;
+	grid-template-columns: 0.25fr 1fr;
+	grid-template-rows: 100px 20px 1fr;
+	height: 100vh;
+	&__side-panel {
+		display: flex;
+		flex-direction: column;
+		border: solid red 2px;
+		background-color: azure;
+		grid-row: span 2;
+	}
+	&__project-display {
+		display: flex;
+		justify-content: space-between;
+	}
+	/* &__main-panel {
+	} */
+}
+.side-panel {
+	&__title {
+		color: purple;
+		font-size: x-large;
+	}
+	// &__button {
+	// }
+
+	// &__header {
+	// }
+
+	// &__project-list-wrapper {
+	// }
+	// &__form {
+	// 	&__label {
+	// 	}
+	// 	&__input {
+	// 	}
+	// 	&__select {
+	// 		&__option {
+	// 		}
+	// 	}
+	// 	&__button {
+	// 	}
+	// }
+
+	// &__button-wrapper {
+	// 	&__button {
+	// 	}
+	// }
+}
+// .project-display {
+// 	&__header {
+// 	}
+// 	&__sort-wrapper {
+// 		&__button {
+// 		}
+// 		&__sort-options {
+// 			&__button {
+// 			}
+// 			&__hidden {
+// 				display: none;
+// 			}
+// 			&__shown {
+// 				display: block;
+// 			}
+// 		}
+// 	}
+// }

@@ -19,6 +19,8 @@
 	},
 	"homepage": "https://github.com/at-a-minimum1/odin-project-1.5-todo#readme",
 	"devDependencies": {
+		"sass": "^1.64.2",
+		"sass-loader": "^13.3.2",
 		"webpack": "^5.88.1",
 		"webpack-cli": "^5.1.4"
 	},

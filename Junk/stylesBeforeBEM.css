@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* Elements */
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkturquoise;
+}
+
+/* Utility Classes*/
+
+.hide>* {
+    display: none;
+}
+
+/* Wrappers */
+.desktop-wrapper {
+    display: grid;
+    grid-template-columns: 0.25fr 1fr;
+    grid-template-rows: 100px 20px 1fr;
+    height: 100vh;
+}
+
+.navigation-wrap {
+    background-color: antiquewhite;
+    grid-column: span 2;
+}
+
+.side-panel-wrapper {
+    display: flex;
+    flex-direction: column;
+    border: solid red 2px;
+    background-color: azure;
+    grid-row: span 2;
+}
+
+.side-panel-wrapper>* {
+    margin-bottom: 1px;
+}
+
+#task-form {
+    display: flex;
+    flex-direction: column;
+    border: solid black;
+}
+
+.project-list-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-wrapper {
+    border: solid rgb(124, 124, 124);
+    margin-bottom: 2px;
+}
+
+.project-display {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Everything else */
+.sort-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 94%;
+    width: max-content;
+    /* left: 0; */
+    /* right: 100%; */
+}
