@@ -5,7 +5,7 @@
 	font-size: 100%;
 	font-family: inherit;
 	vertical-align: baseline;
-	box-sizing: border-box;
+	// box-sizing: border-box;
 }
 /* Primitive Elements */
 button {
@@ -39,14 +39,21 @@ button:hover {
 	&__project-display {
 		display: flex;
 		justify-content: space-between;
+		background-color: yellow;
 	}
-	/* &__main-panel {
-	} */
+	&__navigation-wrap {
+		grid-column: span 2;
+		background-color: bisque;
+	}
+	&__main-panel {
+		background-color: aliceblue;
+	}
 }
 .side-panel {
 	&__title {
-		color: purple;
 		font-size: x-large;
+		display: flex;
+		justify-content: center;
 	}
 	// &__button {
 	// }
@@ -74,21 +81,29 @@ button:hover {
 	// 	}
 	// }
 }
-// .project-display {
-// 	&__header {
-// 	}
-// 	&__sort-wrapper {
-// 		&__button {
-// 		}
-// 		&__sort-options {
-// 			&__button {
-// 			}
-// 			&__hidden {
-// 				display: none;
-// 			}
-// 			&__shown {
-// 				display: block;
-// 			}
-// 		}
-// 	}
-// }
+.project-display {
+	justify-content: space-between;
+	&__header {
+		background-color: antiquewhite;
+	}
+	&__sort-wrapper {
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		&__button {
+		}
+		&__sort-options {
+			display: flex;
+			flex-direction: column;
+			// position: absolute;
+			&__button {
+			}
+			&--hidden {
+				display: none;
+			}
+			&--shown {
+				display: block;
+			}
+		}
+	}
+}
