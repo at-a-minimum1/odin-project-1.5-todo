@@ -102,3 +102,30 @@ export function instantiateProjectList(projectData) {
 export function toggleHidden(html) {
 	html.classList.toggle("hide");
 }
+
+// export function toggleHideElement(elementClassNames) {
+// 	for (elementClassName in elementClassNames) {
+// 		const element = document.querySelector(`.${elementClassName}`);
+// 		element.classList.toggle(`${elementClassName}--hide`);
+// 	}
+// 	// const element = document.querySelector(`.${elementClassName}`);
+// 	// element.classList.toggle(`${elementClassName}--hide`);
+// }
+
+// export function toggleHideElement(arrayOfHtmlObj) {
+// 	arrayOfHtmlObj.forEach((htmlObj) => {
+// 		htmlObj.classList.toggle(`${htmlObj.className}--hide`);
+// 		console.log(htmlObj.className);
+// 	});
+// }
+
+export function toggleHideElement(elementsToToggle) {
+	for (const htmlObj in elementsToToggle) {
+		const targetClassName = elementsToToggle[htmlObj];
+		const element = document.querySelector(`.${htmlObj}`);
+
+		if (element && targetClassName) {
+			element.classList.toggle(`${targetClassName}--hide`);
+		}
+	}
+}

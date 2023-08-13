@@ -1,7 +1,6 @@
 import { Task } from "../modules/items/task";
 import { saveData, loadData } from "./dataStorage";
 import { TaskList } from "../modules/items/taskList";
-import * as dom from "../modules/dom/domControl";
 import { isToday, isWithinInterval, addWeeks } from "date-fns";
 
 let project0 = new TaskList("project-0", []);
@@ -32,15 +31,16 @@ export function instantiateLocalStorage() {
 export function addTask(formData) {
 	let newTask = new Task(formData.title, formData.date, formData.priority);
 	let currentProject = getCurrentProject();
-	console.log(currentProject);
-	console.log(typeof currentProject);
+	// console.log(currentProject);
+	// console.log(typeof currentProject);
 	let tempProject = currentProject.array;
 	tempProject.push(newTask);
 	currentProject.array = tempProject;
 
 	saveData("project-data", projectData);
 
-	dom.addToMainPanel(newTask);
+	return newTask;
+	// dom.addToMainPanel(newTask);
 }
 
 export function removeTask(taskId) {

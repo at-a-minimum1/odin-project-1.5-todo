@@ -2,6 +2,9 @@ import * as dom from "./modules/dom/domControl";
 import * as data from "./utils/data";
 import "./styles.scss";
 
+// https://isotropic.co/best-browsers-for-developers/
+// TODO download a new browser and run this from there to determine if bug is from Chromium or not
+
 window.onload = () => {
 	data.instantiateLocalStorage();
 	const projectData = data.getProjectData();
@@ -20,7 +23,12 @@ const addTaskButton = document.getElementById("add-task");
 addTaskButton.addEventListener("click", (event) => {
 	event.preventDefault();
 	const formData = dom.getFormData();
-	data.addTask(formData);
+
+	const newTask = data.addTask(formData);
+	dom.addToMainPanel(newTask);
+	// console.log(formData);
+	// console.log(new Error().stack);
+	console.trace();
 });
 
 const addProjectButton = document.getElementById("add-project");

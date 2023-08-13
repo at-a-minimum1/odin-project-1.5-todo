@@ -8,6 +8,7 @@ module.exports = {
 	output: {
 		filename: "main.js",
 		path: path.resolve(__dirname, "dist"),
+		publicPath: "/odin-project-1.5-todo/dist/", // Add the correct public path here
 	},
 	module: {
 		rules: [
@@ -27,7 +28,7 @@ module.exports = {
 			template: "./src/index.html",
 		}),
 		new CleanWebpackPlugin({
-			cleanOnceBeforeBuildPatterns: ["dist", "src"], // Add "src" to the patterns
+			cleanOnceBeforeBuildPatterns: ["dist"],
 		}),
 	],
 };
