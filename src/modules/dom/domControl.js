@@ -120,12 +120,22 @@ export function toggleHidden(html) {
 // }
 
 export function toggleHideElement(elementsToToggle) {
-	for (const htmlObj in elementsToToggle) {
-		const targetClassName = elementsToToggle[htmlObj];
-		const element = document.querySelector(`.${htmlObj}`);
-
-		if (element && targetClassName) {
-			element.classList.toggle(`${targetClassName}--hide`);
+	// Takes in the key value pair where the key is a classname and the value is an dom element.
+	for (const className in elementsToToggle) {
+		const element = elementsToToggle[className];
+		if (element) {
+			element.classList.toggle(`${className}--hidden`);
 		}
 	}
 }
+
+// export function toggleHideElement(elementsToToggle) {
+// 	for (const htmlObj in elementsToToggle) {
+// 		const targetClassName = elementsToToggle[htmlObj];
+// 		const element = document.querySelector(`.${htmlObj}`);
+
+// 		if (element && targetClassName) {
+// 			element.classList.toggle(`${targetClassName}--hide`);
+// 		}
+// 	}
+// }

@@ -16,7 +16,15 @@ export function createCard(title, date, priority) {
 
 	// Block modifiers
 
-	// Create card logic here
+	// Append elements
+
+	cardWrap.append(
+		checkboxSection,
+		titleSection,
+		dateSection,
+		expandButtonSection
+	);
+	// Event listeners
 	return cardWrap;
 }
 

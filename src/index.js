@@ -26,9 +26,6 @@ addTaskButton.addEventListener("click", (event) => {
 
 	const newTask = data.addTask(formData);
 	dom.addToMainPanel(newTask);
-	// console.log(formData);
-	// console.log(new Error().stack);
-	console.trace();
 });
 
 const addProjectButton = document.getElementById("add-project");
@@ -42,7 +39,11 @@ const sortDropdownButton = document.getElementById("sort-dropdown");
 sortDropdownButton.addEventListener("click", (event) => {
 	// Toggle hidden elements
 	const sortOptions = document.getElementById("sort-options");
-	dom.toggleHidden(sortOptions);
+	const elementsToToggle = {
+		"project-display__sort-wrapper__sort-options": sortOptions,
+	};
+	dom.toggleHideElement(elementsToToggle);
+	// dom.toggleHidden(sortOptions);
 });
 
 const todayButton = document.getElementById("today-button");
@@ -78,7 +79,11 @@ function handleSortClick(sortBy) {
 	dom.clearMainPanel();
 	dom.updateMainPanel(sortedArray);
 }
-const sortButtons = document.querySelectorAll(".sort-button");
+// const sortButtons = document.querySelectorAll(".sort-button");
+const sortButtons = document.querySelectorAll(
+	".sort-wrapper__sort-options__button"
+);
+
 sortButtons.forEach((button) => {
 	button.addEventListener("click", () => {
 		const sortBy = button.dataset.sort;
