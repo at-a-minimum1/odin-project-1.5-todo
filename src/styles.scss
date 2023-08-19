@@ -108,3 +108,24 @@ button:hover {
 		}
 	}
 }
+
+.card {
+	// display: flex;
+	// border: solid red 2px;
+	display: grid;
+	grid-template-columns: 100px 1fr 0.5fr 100px;
+	&__checkbox__section {
+		border: dotted black 1px;
+	}
+	&__title__section {
+		border: dotted green 1px;
+	}
+	&__date__section {
+		border: dotted blue 1px;
+	}
+	&__expand__button__section {
+		display: flex;
+		background-color: aqua;
+		justify-content: flex-end;
+	}
+}

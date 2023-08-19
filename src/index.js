@@ -43,7 +43,6 @@ sortDropdownButton.addEventListener("click", (event) => {
 		"project-display__sort-wrapper__sort-options": sortOptions,
 	};
 	dom.toggleHideElement(elementsToToggle);
-	// dom.toggleHidden(sortOptions);
 });
 
 const todayButton = document.getElementById("today-button");
@@ -62,6 +61,10 @@ importantButton.addEventListener("click", () => {
 });
 // TODO Maybe use hover effects to reveal and hide the elements.
 // sortDropdown.addEventListener("pointerleave", () => {
+const addCardButton = document.getElementById("testAddCard");
+addCardButton.addEventListener("click", () => {
+	dom.addCardTest();
+});
 // 	const sortOptions = document.getElementById("sort-options");
 // 	dom.toggleHidden(sortOptions);
 // });

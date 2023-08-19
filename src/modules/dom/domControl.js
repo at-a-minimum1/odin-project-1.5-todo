@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { TaskList } from "../items/taskList";
+import * as card from "./card";
 
 export function getFormData() {
 	const taskTitle = document.getElementById("task-title").value || "Test Title";
@@ -12,6 +13,11 @@ export function getFormData() {
 		priority: taskPriority,
 	};
 	return formData;
+}
+// TODO move this from a test function into a function that will take params and represent the values in the tasks
+export function addCardTest() {
+	const resultsPanel = document.getElementById("main-panel-wrapper");
+	resultsPanel.append(card.createCard());
 }
 
 export function addToMainPanel(task) {
@@ -97,10 +103,6 @@ export function instantiateProjectList(projectData) {
 		newOption.textContent = element.title;
 		projectDropDown.appendChild(newOption);
 	});
-}
-
-export function toggleHidden(html) {
-	html.classList.toggle("hide");
 }
 
 // export function toggleHideElement(elementClassNames) {
