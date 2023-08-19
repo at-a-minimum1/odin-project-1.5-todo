@@ -1,6 +1,5 @@
 import { format } from "date-fns";
-import { TaskList } from "../items/taskList";
-import * as card from "./card";
+import * as cardModule from "./card";
 
 export function getFormData() {
 	const taskTitle = document.getElementById("task-title").value || "Test Title";
@@ -17,7 +16,7 @@ export function getFormData() {
 // TODO move this from a test function into a function that will take params and represent the values in the tasks
 export function addCardTest() {
 	const resultsPanel = document.getElementById("main-panel-wrapper");
-	resultsPanel.append(card.createCard());
+	resultsPanel.append(cardModule.createTestCard());
 }
 
 export function addToMainPanel(task) {
@@ -38,7 +37,15 @@ export function addToMainPanel(task) {
 	cardWrap.append(task.priority);
 	cardWrap.append(deleteButton);
 	// Append the card element to the main panel
-	mainPanel.append(cardWrap);
+	// mainPanel.append(cardWrap); //TODO uncomment this if want to go back to pre-card version
+
+	// TODO Merge the code below
+	const newCard = cardModule.createCard(
+		task.title,
+		formattedDate,
+		task.priority
+	);
+	mainPanel.append(newCard);
 }
 
 export function instaniateMainPanel(taskData) {
@@ -55,8 +62,6 @@ export function updateMainPanel(taskList) {
 			addToMainPanel(element);
 		});
 	} else {
-		// const projectDisplay = document.getElementById("project-header");
-		// projectDisplay.textContent = taskList.title;
 		updateProjectHeader(taskList.title);
 		taskList.array.forEach((element) => {
 			addToMainPanel(element);
@@ -105,22 +110,6 @@ export function instantiateProjectList(projectData) {
 	});
 }
 
-// export function toggleHideElement(elementClassNames) {
-// 	for (elementClassName in elementClassNames) {
-// 		const element = document.querySelector(`.${elementClassName}`);
-// 		element.classList.toggle(`${elementClassName}--hide`);
-// 	}
-// 	// const element = document.querySelector(`.${elementClassName}`);
-// 	// element.classList.toggle(`${elementClassName}--hide`);
-// }
-
-// export function toggleHideElement(arrayOfHtmlObj) {
-// 	arrayOfHtmlObj.forEach((htmlObj) => {
-// 		htmlObj.classList.toggle(`${htmlObj.className}--hide`);
-// 		console.log(htmlObj.className);
-// 	});
-// }
-
 export function toggleHideElement(elementsToToggle) {
 	// Takes in the key value pair where the key is a classname and the value is an dom element.
 	for (const className in elementsToToggle) {
@@ -130,14 +119,3 @@ export function toggleHideElement(elementsToToggle) {
 		}
 	}
 }
-
-// export function toggleHideElement(elementsToToggle) {
-// 	for (const htmlObj in elementsToToggle) {
-// 		const targetClassName = elementsToToggle[htmlObj];
-// 		const element = document.querySelector(`.${htmlObj}`);
-
-// 		if (element && targetClassName) {
-// 			element.classList.toggle(`${targetClassName}--hide`);
-// 		}
-// 	}
-// }
