@@ -43,7 +43,8 @@ export function addToMainPanel(task) {
 	const newCard = cardModule.createCard(
 		task.title,
 		formattedDate,
-		task.priority
+		task.priority,
+		task.id
 	);
 	mainPanel.append(newCard);
 }

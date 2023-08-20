@@ -96,9 +96,6 @@ button:hover {
 		&__sort-options {
 			display: flex;
 			flex-direction: column;
-			// position: absolute;
-			// &__button {
-			// }
 			&--hidden {
 				display: none;
 			}
@@ -110,22 +107,54 @@ button:hover {
 }
 
 .card {
-	// display: flex;
-	// border: solid red 2px;
 	display: grid;
 	grid-template-columns: 100px 1fr 0.5fr 100px;
 	&__checkbox__section {
 		border: dotted black 1px;
+		&--priority-high {
+			background-color: red;
+		}
+
+		&--priority-medium {
+			background-color: yellow;
+		}
+
+		&--priority-low {
+			background-color: green;
+		}
+		&--hidden {
+			display: none;
+		}
 	}
 	&__title__section {
 		border: dotted green 1px;
+		&--hidden {
+			display: none;
+		}
 	}
 	&__date__section {
 		border: dotted blue 1px;
+		&--hidden {
+			display: none;
+		}
 	}
 	&__expand__button__section {
 		display: flex;
 		background-color: aqua;
 		justify-content: flex-end;
+		&--priority-high {
+			background-color: red;
+		}
+		&--priority-medium {
+			background-color: yellow;
+		}
+		&--priority-low {
+			background-color: green;
+		}
+		&__button {
+			&--hidden {
+				display: none;
+			}
+		}
 	}
 }

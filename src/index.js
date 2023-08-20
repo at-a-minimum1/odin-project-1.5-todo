@@ -99,11 +99,16 @@ const resultsPanel = document.getElementById("main-panel-wrapper");
 resultsPanel.addEventListener("click", (event) => {
 	// If event matches whatever do something
 	if (event.target.matches(".delete-button")) {
+		//TODO get the delete button working with new card component. After getting the expand button to work.
 		let currentProject = data.getCurrentProject();
 		const taskId = event.target.closest(".card-wrapper").dataset.taskId;
 		data.removeTask(taskId);
 		dom.clearMainPanel();
 		dom.updateMainPanel(currentProject);
+	}
+	if (event.target.matches(".card__expand__button__section__button")) {
+		const taskId = event.target.closest(".card").dataset.taskId;
+		console.log(taskId);
 	}
 });
 
