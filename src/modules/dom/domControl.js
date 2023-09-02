@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import * as cardModule from "./card";
 
 export function getFormData() {
@@ -6,6 +5,7 @@ export function getFormData() {
 	const taskDate = document.getElementById("task-due-date").value || new Date();
 	const taskPriority =
 		document.getElementById("task-priority").value || "Test Priority";
+	
 	const formData = {
 		title: taskTitle,
 		date: taskDate,
@@ -13,36 +13,15 @@ export function getFormData() {
 	};
 	return formData;
 }
-// TODO move this from a test function into a function that will take params and represent the values in the tasks
-export function addCardTest() {
-	const resultsPanel = document.getElementById("main-panel-wrapper");
-	resultsPanel.append(cardModule.createTestCard());
-}
 
 export function addToMainPanel(task) {
 	const mainPanel = document.getElementById("main-panel-wrapper");
-	const formattedDate = format(new Date(task.date), "MM/dd/yyyy");
-	// Append the items in a card element
-	const cardWrap = document.createElement("div");
-	cardWrap.classList.add("card-wrapper");
-	// Add the dataset taskId to the card wrap
-	cardWrap.dataset.taskId = task.id;
-
-	const deleteButton = document.createElement("button");
-	deleteButton.textContent = "Delete";
-	deleteButton.classList.add("delete-button");
-
-	cardWrap.append(task.title);
-	cardWrap.append(formattedDate);
-	cardWrap.append(task.priority);
-	cardWrap.append(deleteButton);
-	// Append the card element to the main panel
-	// mainPanel.append(cardWrap); //TODO uncomment this if want to go back to pre-card version
+	// const formattedDate = format(new Date(task.date), "MM/dd/yyyy");
 
 	// TODO Merge the code below
 	const newCard = cardModule.createCard(
 		task.title,
-		formattedDate,
+		task.date,
 		task.priority,
 		task.id
 	);

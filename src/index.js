@@ -43,6 +43,7 @@ sortDropdownButton.addEventListener("click", (event) => {
 		"project-display__sort-wrapper__sort-options": sortOptions,
 	};
 	dom.toggleHideElement(elementsToToggle);
+	// console.log(elementsToToggle);
 });
 
 const todayButton = document.getElementById("today-button");
@@ -59,15 +60,6 @@ const importantButton = document.getElementById("important-button");
 importantButton.addEventListener("click", () => {
 	handleFilterClick("Important");
 });
-// TODO Maybe use hover effects to reveal and hide the elements.
-// sortDropdown.addEventListener("pointerleave", () => {
-const addCardButton = document.getElementById("testAddCard");
-addCardButton.addEventListener("click", () => {
-	dom.addCardTest();
-});
-// 	const sortOptions = document.getElementById("sort-options");
-// 	dom.toggleHidden(sortOptions);
-// });
 
 function handleFilterClick(fliterBy) {
 	let filteredTasks = data.filterTasks(fliterBy);
@@ -82,7 +74,7 @@ function handleSortClick(sortBy) {
 	dom.clearMainPanel();
 	dom.updateMainPanel(sortedArray);
 }
-// const sortButtons = document.querySelectorAll(".sort-button");
+
 const sortButtons = document.querySelectorAll(
 	".sort-wrapper__sort-options__button"
 );
@@ -98,17 +90,56 @@ sortButtons.forEach((button) => {
 const resultsPanel = document.getElementById("main-panel-wrapper");
 resultsPanel.addEventListener("click", (event) => {
 	// If event matches whatever do something
-	if (event.target.matches(".delete-button")) {
+	const taskId = event.target.closest(".card").dataset.taskId;
+	const deleteBtn = document.getElementById(`deleteButton-${taskId}`);
+	// TODO FIX THE FOLLOWING BUG: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') at HTMLDivElement.eval (index.js:86:13)
+	// BUG Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') at HTMLDivElement.eval (index.js:86:13)
+	deleteBtn.addEventListener("click", () => {
+		// console.log("delete button" + taskId);
+		let currentProject = data.getCurrentProject();
+		// const taskId = event.target.closest(".card").dataset.taskId;
+		data.removeTask(taskId);
+		dom.clearMainPanel();
+		dom.updateMainPanel(currentProject);
+	});
+	if (event.target.matches(".button-container__delete__button")) {
+		// console.log("delete button");
 		//TODO get the delete button working with new card component. After getting the expand button to work.
 		let currentProject = data.getCurrentProject();
-		const taskId = event.target.closest(".card-wrapper").dataset.taskId;
+		const taskId = event.target.closest(".card").dataset.taskId;
 		data.removeTask(taskId);
 		dom.clearMainPanel();
 		dom.updateMainPanel(currentProject);
 	}
 	if (event.target.matches(".card__expand__button__section__button")) {
-		const taskId = event.target.closest(".card").dataset.taskId;
-		console.log(taskId);
+		const card = event.target.closest(".card");
+		const taskId = card.dataset.taskId;
+		const titleSection = card.querySelector(".card__title__section__title");
+		const formWrap = card.querySelector(".card__title__section__form-wrap");
+		const dateElement = card.querySelector(".card__date__section__date");
+		const descriptionHeader = card.querySelector(
+			".card__date__section__header"
+		);
+		const descriptionTextarea = card.querySelector(
+			".card__date__section__textarea"
+		);
+
+		const buttonContainer = card.querySelector(
+			".card__expand__button__section__button-container"
+		);
+		const checkbox = card.querySelector(".card__checkbox__section__checkbox");
+
+		const cardElementsToToggle = {
+			"card__title__section__form-wrap": formWrap,
+			"card__title__section__title": titleSection,
+			"card__date__section__date": dateElement,
+			"card__date__section__header": descriptionHeader,
+			"card__date__section__textarea": descriptionTextarea,
+			"card__expand__button__section__button-container": buttonContainer,
+			"card__checkbox__section__checkbox": checkbox,
+		};
+		dom.toggleHideElement(cardElementsToToggle);
+		// console.log(buttonContainer);
 	}
 });
 

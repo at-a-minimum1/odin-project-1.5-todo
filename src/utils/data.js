@@ -154,3 +154,19 @@ export function addProject() {
 		);
 	}
 }
+
+export function updateTask(
+	taskId,
+	inputTitle,
+	inputDate,
+	inputPriority,
+	inputDescription
+) {
+	const { taskList, taskIndex, task } = getTaskAndListById(taskId);
+	task.title = inputTitle;
+	task.date = inputDate;
+	task.priority = inputPriority;
+	task.description = inputDescription;
+
+	saveData("project-data", projectData);
+}

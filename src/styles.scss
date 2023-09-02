@@ -107,54 +107,118 @@ button:hover {
 }
 
 .card {
-	display: grid;
-	grid-template-columns: 100px 1fr 0.5fr 100px;
-	&__checkbox__section {
-		border: dotted black 1px;
-		&--priority-high {
-			background-color: red;
-		}
-
-		&--priority-medium {
-			background-color: yellow;
-		}
-
-		&--priority-low {
-			background-color: green;
-		}
-		&--hidden {
-			display: none;
-		}
-	}
-	&__title__section {
-		border: dotted green 1px;
-		&--hidden {
-			display: none;
-		}
-	}
-	&__date__section {
-		border: dotted blue 1px;
-		&--hidden {
-			display: none;
-		}
-	}
 	&__expand__button__section {
 		display: flex;
-		background-color: aqua;
 		justify-content: flex-end;
-		&--priority-high {
-			background-color: red;
-		}
-		&--priority-medium {
-			background-color: yellow;
-		}
-		&--priority-low {
+
+		&--priority--low {
 			background-color: green;
 		}
-		&__button {
+	}
+}
+
+.card {
+	display: grid;
+	grid-template-columns: 100px 1fr 0.5fr 100px;
+	padding-bottom: 1px;
+	&__checkbox__section {
+		border: dotted black 1px;
+		&--priority--high {
+			background-color: red;
+		}
+
+		&--priority--medium {
+			background-color: yellow;
+		}
+
+		&--priority--low {
+			background-color: green;
+		}
+		&__checkbox {
 			&--hidden {
 				display: none;
 			}
 		}
 	}
+	&__title__section {
+		border: dotted green 1px;
+		&__title {
+			&--hidden {
+				display: none;
+			}
+		}
+		&--hidden {
+			display: none;
+		}
+		&__form-wrap {
+			display: flex;
+			flex-direction: column;
+			&--hidden {
+				display: none;
+			}
+		}
+	}
+	&__date__section {
+		border: dotted blue 1px;
+		&__date {
+			&--hidden {
+				display: none;
+			}
+		}
+		&--hidden {
+			display: none;
+		}
+		&__header {
+			&--hidden {
+				display: none;
+			}
+		}
+		&__textarea {
+			height: 80%;
+			width: 100%;
+			&--hidden {
+				display: none;
+			}
+		}
+	}
+	&__expand__button__section {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: flex-end;
+		background-color: transparent;
+		&--priority--high {
+			background-color: red;
+		}
+		&--priority--medium {
+			background-color: yellow;
+		}
+		&--priority--low {
+			background-color: green;
+		}
+		&__button {
+			background-color: transparent;
+			&--hidden {
+				display: none;
+			}
+			width: fit-content;
+		}
+		&__button-container {
+			display: flex;
+			flex-direction: column;
+
+			&--hidden {
+				display: none;
+			}
+			&__button {
+				background-color: transparent;
+			}
+		}
+	}
 }
+
+.card__expand__button__section__button-container > * {
+	background-color: transparent;
+}
+// <div class="card__expand__button__section card__expand__button__section--priority--low"><button class="card__expand__button__section__button">Expand</button></div>
