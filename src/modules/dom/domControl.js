@@ -5,24 +5,24 @@ export function getFormData() {
 	const taskDate = document.getElementById("task-due-date").value || new Date();
 	const taskPriority =
 		document.getElementById("task-priority").value || "Test Priority";
-	
+	const taskDescription =
+		document.getElementById("task-description").value || "Test Description";
 	const formData = {
 		title: taskTitle,
 		date: taskDate,
 		priority: taskPriority,
+		description: taskDescription,
 	};
 	return formData;
 }
 
 export function addToMainPanel(task) {
 	const mainPanel = document.getElementById("main-panel-wrapper");
-	// const formattedDate = format(new Date(task.date), "MM/dd/yyyy");
-
-	// TODO Merge the code below
 	const newCard = cardModule.createCard(
 		task.title,
 		task.date,
 		task.priority,
+		task.description,
 		task.id
 	);
 	mainPanel.append(newCard);

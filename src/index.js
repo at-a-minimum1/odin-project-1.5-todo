@@ -2,9 +2,6 @@ import * as dom from "./modules/dom/domControl";
 import * as data from "./utils/data";
 import "./styles.scss";
 
-// https://isotropic.co/best-browsers-for-developers/
-// TODO download a new browser and run this from there to determine if bug is from Chromium or not
-
 window.onload = () => {
 	data.instantiateLocalStorage();
 	const projectData = data.getProjectData();
@@ -43,7 +40,6 @@ sortDropdownButton.addEventListener("click", (event) => {
 		"project-display__sort-wrapper__sort-options": sortOptions,
 	};
 	dom.toggleHideElement(elementsToToggle);
-	// console.log(elementsToToggle);
 });
 
 const todayButton = document.getElementById("today-button");
@@ -92,19 +88,34 @@ resultsPanel.addEventListener("click", (event) => {
 	// If event matches whatever do something
 	const taskId = event.target.closest(".card").dataset.taskId;
 	const deleteBtn = document.getElementById(`deleteButton-${taskId}`);
-	// TODO FIX THE FOLLOWING BUG: Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') at HTMLDivElement.eval (index.js:86:13)
-	// BUG Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') at HTMLDivElement.eval (index.js:86:13)
+	const saveBtn = document.getElementById(`saveButton-${taskId}`);
 	deleteBtn.addEventListener("click", () => {
-		// console.log("delete button" + taskId);
 		let currentProject = data.getCurrentProject();
-		// const taskId = event.target.closest(".card").dataset.taskId;
 		data.removeTask(taskId);
 		dom.clearMainPanel();
 		dom.updateMainPanel(currentProject);
 	});
+	saveBtn.addEventListener("click", () => {
+		// TODO get the values from the form elements in the card and put them in the following variables.
+		console.log("save button: " + taskId);
+		const inputTitle = "Test Save Button";
+		const inputDate = "2003-05-04";
+		const inputPriority = "high";
+		const inputDescription = "Test Save Description";
+		data.updateTask(
+			taskId,
+			inputTitle,
+			inputDate,
+			inputPriority,
+			inputDescription
+		);
+		// Add all the params taskId, inputTitle, inputDate, inputPriority, inputDescription
+		let currentProject = data.getCurrentProject();
+
+		dom.clearMainPanel();
+		dom.updateMainPanel(currentProject);
+	});
 	if (event.target.matches(".button-container__delete__button")) {
-		// console.log("delete button");
-		//TODO get the delete button working with new card component. After getting the expand button to work.
 		let currentProject = data.getCurrentProject();
 		const taskId = event.target.closest(".card").dataset.taskId;
 		data.removeTask(taskId);
@@ -139,7 +150,6 @@ resultsPanel.addEventListener("click", (event) => {
 			"card__checkbox__section__checkbox": checkbox,
 		};
 		dom.toggleHideElement(cardElementsToToggle);
-		// console.log(buttonContainer);
 	}
 });
 

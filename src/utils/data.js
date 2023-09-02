@@ -29,10 +29,13 @@ export function instantiateLocalStorage() {
 }
 
 export function addTask(formData) {
-	let newTask = new Task(formData.title, formData.date, formData.priority);
+	let newTask = new Task(
+		formData.title,
+		formData.date,
+		formData.priority,
+		formData.description
+	);
 	let currentProject = getCurrentProject();
-	// console.log(currentProject);
-	// console.log(typeof currentProject);
 	let tempProject = currentProject.array;
 	tempProject.push(newTask);
 	currentProject.array = tempProject;
@@ -40,7 +43,6 @@ export function addTask(formData) {
 	saveData("project-data", projectData);
 
 	return newTask;
-	// dom.addToMainPanel(newTask);
 }
 
 export function removeTask(taskId) {
