@@ -86,9 +86,21 @@ sortButtons.forEach((button) => {
 const resultsPanel = document.getElementById("main-panel-wrapper");
 resultsPanel.addEventListener("click", (event) => {
 	// If event matches whatever do something
-	const taskId = event.target.closest(".card").dataset.taskId;
+	const selectedCard = event.target.closest(".card");
+	const taskId = selectedCard.dataset.taskId;
 	const deleteBtn = document.getElementById(`deleteButton-${taskId}`);
 	const saveBtn = document.getElementById(`saveButton-${taskId}`);
+
+	const cardInputs = selectedCard.querySelectorAll(
+		".card__title__section__form-wrap__input"
+	);
+	const cardPriority = selectedCard.querySelector(
+		".card__title__section__form-wrap__select"
+	);
+	const cardInputDescription = selectedCard.querySelector(
+		".card__date__section__textarea"
+	);
+
 	deleteBtn.addEventListener("click", () => {
 		let currentProject = data.getCurrentProject();
 		data.removeTask(taskId);
@@ -96,12 +108,17 @@ resultsPanel.addEventListener("click", (event) => {
 		dom.updateMainPanel(currentProject);
 	});
 	saveBtn.addEventListener("click", () => {
-		// TODO get the values from the form elements in the card and put them in the following variables.
-		console.log("save button: " + taskId);
-		const inputTitle = "Test Save Button";
-		const inputDate = "2003-05-04";
-		const inputPriority = "high";
-		const inputDescription = "Test Save Description";
+		let inputTitle = "Test Save Button";
+		let inputDate = "2003-05-04";
+		let inputPriority = "high";
+		let inputDescription = "Test Save Description";
+		let cardInputsArray = Array.from(cardInputs);
+
+		inputTitle = cardInputsArray[0].value;
+		inputDate = cardInputsArray[1].value;
+		inputPriority = cardPriority.value.slice(18).toLowerCase();
+		inputDescription = cardInputDescription.value;
+
 		data.updateTask(
 			taskId,
 			inputTitle,
@@ -109,12 +126,12 @@ resultsPanel.addEventListener("click", (event) => {
 			inputPriority,
 			inputDescription
 		);
-		// Add all the params taskId, inputTitle, inputDate, inputPriority, inputDescription
-		let currentProject = data.getCurrentProject();
 
+		let currentProject = data.getCurrentProject();
 		dom.clearMainPanel();
 		dom.updateMainPanel(currentProject);
 	});
+	
 	if (event.target.matches(".button-container__delete__button")) {
 		let currentProject = data.getCurrentProject();
 		const taskId = event.target.closest(".card").dataset.taskId;

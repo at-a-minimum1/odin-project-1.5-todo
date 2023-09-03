@@ -53,11 +53,14 @@ export function createCard(
 	const formInputTitle = document.createElement("input");
 	formInputTitle.setAttribute("type", "text");
 	formInputTitle.value = inputTitle;
+	formInputTitle.classList.add("card__title__section__form-wrap__input");
+
 	const formPriority = document.createElement("label");
 	formPriority.setAttribute("for", "priorityDropdown");
 	formPriority.textContent = "Priority";
 	const formSelectPriority = document.createElement("select");
 	formSelectPriority.setAttribute("id", "priorityDropdown");
+	formSelectPriority.classList.add("card__title__section__form-wrap__select");
 	// Create a high priority option
 	const formSelectPriorityHigh = document.createElement("option");
 	formSelectPriorityHigh.setAttribute("value", "formSelectPriorityHigh");
@@ -91,7 +94,8 @@ export function createCard(
 	const formInputDate = document.createElement("input");
 	formInputDate.setAttribute("type", "date");
 	formInputDate.setAttribute("id", "formDate");
-	// formInputDate.setAttribute("value", inputDate);
+	formInputDate.classList.add("card__title__section__form-wrap__input");
+
 	let dateString;
 	if (typeof inputDate == "string") {
 		dateString = inputDate.slice(0, 10);
@@ -99,8 +103,6 @@ export function createCard(
 		dateString = inputDate.toISOString().slice(0, 10);
 	}
 	formInputDate.setAttribute("value", dateString);
-
-	// formInputDate.defaultValue = inputDate;
 
 	// Append form elements
 	formWrap.append(
