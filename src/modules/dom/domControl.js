@@ -55,8 +55,9 @@ export function clearMainPanel() {
 }
 
 export function updateProjectHeader(projectName) {
-	const projectDisplay = document.getElementById("project-header");
-	projectDisplay.textContent = projectName;
+	// TODO change when you update the header to a dropdown
+	// const projectDisplay = document.getElementById("project-header");
+	// projectDisplay.textContent = projectName;
 }
 
 export function addToProjectList() {

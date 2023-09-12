@@ -8,6 +8,17 @@ export function createCard(
 	inputDescription,
 	inputTaskId
 ) {
+	// Icons
+	const editIcon = document.createElement("img");
+	editIcon.src = "../src/modules/items/icons/tabler_edit.svg";
+	const trashIcon = document.createElement("img");
+	trashIcon.src = "../src/modules/items/icons/Vector.svg";
+	const mediumPriorityIcon = document.createElement("img");
+	mediumPriorityIcon.src =
+		"../src/modules/items/icons/flat-color-icons_medium-priority@2x.png";
+	const highPriorityIcon = document.createElement("img");
+	highPriorityIcon.src =
+		"../src/modules/items/icons/flat-color-icons_high-priority.svg";
 	// Block
 	const cardWrap = document.createElement("div");
 	cardWrap.classList.add("card");
@@ -37,7 +48,16 @@ export function createCard(
 	expandButtonSection.classList.add("card__expand__button__section");
 	const expandButton = document.createElement("button");
 	expandButton.classList.add("card__expand__button__section__button");
-	expandButton.textContent = "Expand";
+	editIcon.classList.add("card__expand__button__section__button");
+	expandButton.appendChild(editIcon);
+	expandButton.type = "button";
+	// expandButton.textContent = "Edit";
+	// expandButtonSection.append(editIcon);
+	// expandButton.textContent = editIcon;
+	// <button class="card__expand__button__section__button" type="button">
+	// 	Edit
+	// </button>;
+	// <button class="card__expand__button__section__button" type="button"><img src="../src/modules/items/icons/tabler_edit.svg"></button>
 
 	// Block form section
 	const formWrap = document.createElement("div");
@@ -139,13 +159,15 @@ export function createCard(
 	saveButton.classList.add(
 		".card__expand__button__section__button-container__save__button"
 	);
-	saveButton.textContent = "Save";
+	saveButton.textContent = "S";
 	saveButton.id = `saveButton-${inputTaskId}`;
 
 	const deleteButton = document.createElement("button");
 	deleteButton.classList.add(".button-container__delete__button");
 	deleteButton.id = `deleteButton-${inputTaskId}`;
-	deleteButton.textContent = "Delete";
+	trashIcon.classList.add(".button-container__delete__button");
+	deleteButton.appendChild(trashIcon);
+	// deleteButton.textContent = "Delete";
 
 	buttonContainer.append(saveButton, deleteButton);
 

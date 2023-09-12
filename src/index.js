@@ -131,7 +131,7 @@ resultsPanel.addEventListener("click", (event) => {
 		dom.clearMainPanel();
 		dom.updateMainPanel(currentProject);
 	});
-	
+
 	if (event.target.matches(".button-container__delete__button")) {
 		let currentProject = data.getCurrentProject();
 		const taskId = event.target.closest(".card").dataset.taskId;

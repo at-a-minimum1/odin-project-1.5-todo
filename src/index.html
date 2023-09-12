@@ -11,13 +11,13 @@
 		<div class="desktop-wrapper">
 			<nav class="desktop-wrapper__navigation-wrap">
 				<!-- Avatar, different projects here -->
-				Navigation
+				<h1 class="desktop-wrapper__navigation-wrap__header">Sojourn</h1>
 			</nav>
 			<div class="desktop-wrapper__side-panel">
-				<h3 class="side-panel__title">--Home--</h3>
-				<button id="today-button" class="side-panel__button">Today</button>
+				<h3 class="side-panel__title">Due in:</h3>
+				<button id="today-button" class="side-panel__button">24 Hours:</button>
 				<button id="next-week-button" class="side-panel__button">
-					Next Week
+					7 Days:
 				</button>
 				<button id="important-button" class="side-panel__button">
 					Important
@@ -106,7 +106,15 @@
 			</div>
 			<div class="desktop-wrapper__project-display">
 				<h1 id="project-header" class="project-display__header">
-					Current Project
+					<!-- Current Project -->
+					<select id="project-list" class="project-list-wrapper__select">
+						<option value="project1">Project 1</option>
+						<option value="project2">Project 2</option>
+						<option value="project3">Project 3</option>
+						<option value="project4">Project 4</option>
+						<option value="project5">Project 5</option>
+						<option value="project6">Project 6</option>
+					</select>
 				</h1>
 				<div class="project-display__sort-wrapper">
 					<button

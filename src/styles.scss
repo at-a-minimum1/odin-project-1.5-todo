@@ -5,15 +5,16 @@
 	font-size: 100%;
 	font-family: inherit;
 	vertical-align: baseline;
-	// box-sizing: border-box;
 }
 /* Primitive Elements */
 button {
 	cursor: pointer;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 button:hover {
-	background-color: darkturquoise;
+	// background-color: darkturquoise;
+	box-shadow: 0px 0px 0px 0px;
 }
 /* Blocks, elements, modifiers */
 // .desktop-wrapper__side-panel {
@@ -28,33 +29,49 @@ button:hover {
 	grid-template-columns: 0.25fr 1fr;
 	grid-template-rows: 100px 20px 1fr;
 	height: 100vh;
+	background-image: url(./modules/items/ToDoBackground.jpeg);
+	background-size: cover;
+	background-repeat: no-repeat;
 	&__side-panel {
 		display: flex;
 		flex-direction: column;
-		background-color: azure;
+		background-color: #ffd0e080;
 		grid-row: span 2;
+		padding: 18px 30px 18px 30px;
 	}
 	&__project-display {
 		display: flex;
 		justify-content: space-between;
-		background-color: yellow;
 	}
 	&__navigation-wrap {
+		display: flex;
 		grid-column: span 2;
-		background-color: bisque;
+		background-color: #cbecfd80;
+		align-content: center;
+		justify-content: center;
+		font-size: 64px;
 	}
 	&__main-panel {
-		background-color: aliceblue;
+		background-color: #f1c3c510;
 	}
 }
 .side-panel {
 	&__title {
 		font-size: x-large;
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
+		font-family: Hammersmith One;
+		font-size: 20px;
 	}
-	// &__button {
-	// }
+	&__button {
+		background-color: #97e0f6;
+		border-radius: 5px;
+		padding: 4px 0 0 4px;
+		margin: 1px 10px 10px 1px;
+		font-family: Hammersmith One;
+		font-size: 18px;
+		font-weight: bold;
+	}
 
 	// &__header {
 	// }
@@ -84,14 +101,25 @@ button:hover {
 .project-display {
 	justify-content: space-between;
 	&__header {
-		background-color: antiquewhite;
+		background-color: #d9d9d9bf;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		font-size: 18px;
 	}
 	&__sort-wrapper {
 		z-index: 1;
 		display: flex;
 		flex-direction: column;
-		// &__button {
-		// }
+		&__button {
+			font-family: Hammersmith One;
+			background-color: #d9d9d9bf;
+			font-size: 18px;
+			width: 70px;
+			box-shadow: none;
+			&:hover {
+				background-color: #d9d9d9;
+			}
+		}
 		&__sort-options {
 			display: flex;
 			flex-direction: column;
@@ -106,22 +134,20 @@ button:hover {
 }
 
 .card {
-	&__expand__button__section {
-		display: flex;
-		justify-content: flex-end;
-
-		&--priority--low {
-			background-color: green;
-		}
-	}
-}
-
-.card {
+	background-color: #b6d8f3e5;
+	font-family: Hammersmith One;
+	font-size: 20px;
 	display: grid;
 	grid-template-columns: 100px 1fr 0.5fr 100px;
-	padding-bottom: 1px;
+	padding: 2px 0 0 2px;
+	align-items: center;
+	margin: 15px 20px 15px 20px;
+	border-radius: 10px;
 	&__checkbox__section {
-		border: dotted black 1px;
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		padding: 10px 10px 10px 10px;
 		&--priority--high {
 			background-color: red;
 		}
@@ -140,7 +166,10 @@ button:hover {
 		}
 	}
 	&__title__section {
-		border: dotted green 1px;
+		padding: 10px 10px 10px 10px;
+		background-color: #a2caea;
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+		margin: 10px 0px 10px 0px;
 		&__title {
 			&--hidden {
 				display: none;
@@ -158,7 +187,10 @@ button:hover {
 		}
 	}
 	&__date__section {
-		border: dotted blue 1px;
+		padding: 10px 10px 10px 10px;
+		background: #a2caea;
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+		margin: 10px 0px 10px 0px;
 		&__date {
 			&--hidden {
 				display: none;
@@ -181,6 +213,7 @@ button:hover {
 		}
 	}
 	&__expand__button__section {
+		padding: 10px 10px 10px 10px;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
@@ -220,4 +253,3 @@ button:hover {
 .card__expand__button__section__button-container > * {
 	background-color: transparent;
 }
-// <div class="card__expand__button__section card__expand__button__section--priority--low"><button class="card__expand__button__section__button">Expand</button></div>
