@@ -32,11 +32,18 @@ export function createCard(
 	cardWrap.dataset.taskId = inputTaskId;
 
 	// Block elements
-	const checkboxSection = document.createElement("div");
+	const checkboxId = `checkbox-${inputTaskId}`;
+	const checkboxSection = document.createElement("label");
 	checkboxSection.classList.add("card__checkbox__section");
+	checkboxSection.setAttribute("for", checkboxId);
+
 	const checkbox = document.createElement("input");
 	checkbox.setAttribute("type", "checkbox");
 	checkbox.classList.add("card__checkbox__section__checkbox");
+	checkbox.id = checkboxId;
+	// Custom checkbox //
+	const customCheckbox = document.createElement("span");
+	customCheckbox.classList.add("card__checkbox__section__span");
 
 	const titleSection = document.createElement("div");
 	titleSection.classList.add("card__title__section");
@@ -58,13 +65,6 @@ export function createCard(
 	editIcon.classList.add("card__expand__button__section__button");
 	expandButton.appendChild(editIcon);
 	expandButton.type = "button";
-	// expandButton.textContent = "Edit";
-	// expandButtonSection.append(editIcon);
-	// expandButton.textContent = editIcon;
-	// <button class="card__expand__button__section__button" type="button">
-	// 	Edit
-	// </button>;
-	// <button class="card__expand__button__section__button" type="button"><img src="../src/modules/items/icons/tabler_edit.svg"></button>
 
 	// Block form section
 	const formWrap = document.createElement("div");
@@ -166,16 +166,20 @@ export function createCard(
 	saveButton.classList.add(
 		".card__expand__button__section__button-container__button"
 	);
-	
+
 	// saveButton.textContent = "S";
 	saveButton.appendChild(saveIcon);
 	saveButton.id = `saveButton-${inputTaskId}`;
 	saveIcon.id = `saveButton-${inputTaskId}`;
 
 	const deleteButton = document.createElement("button");
-	deleteButton.classList.add(".card__expand__button__section__button-container__button");
+	deleteButton.classList.add(
+		".card__expand__button__section__button-container__button"
+	);
 	deleteButton.id = `deleteButton-${inputTaskId}`;
-	trashIcon.classList.add(".card__expand__button__section__button-container__button");
+	trashIcon.classList.add(
+		".card__expand__button__section__button-container__button"
+	);
 	deleteButton.appendChild(trashIcon);
 
 	buttonContainer.append(saveButton, deleteButton);
@@ -184,7 +188,7 @@ export function createCard(
 	// applyPriorityStyle(checkboxSection, expandButtonSection, inputPriority);
 
 	// Append elements
-	checkboxSection.append(checkbox);
+	checkboxSection.append(checkbox, customCheckbox);
 	titleSection.append(title, formWrap);
 	dateSection.append(date, descriptionHeader, descriptionTextarea);
 	if (inputPriority == "high") {
@@ -205,6 +209,7 @@ export function createCard(
 	return cardWrap;
 }
 
+// TODO Delete the following priority styling function and all of it's corresponding references.
 export function applyPriorityStyle(
 	checkboxSection,
 	expandButtonSection,

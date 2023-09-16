@@ -158,7 +158,6 @@ resultsPanel.addEventListener("click", (event) => {
 		const checkbox = card.querySelector(".card__checkbox__section__checkbox");
 
 		const icon = card.querySelector(".card__date__section__icon");
-		// console.log(icon);
 
 		const cardElementsToToggle = {
 			"card__title__section__form-wrap": formWrap,
