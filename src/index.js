@@ -157,6 +157,9 @@ resultsPanel.addEventListener("click", (event) => {
 		);
 		const checkbox = card.querySelector(".card__checkbox__section__checkbox");
 
+		const icon = card.querySelector(".card__date__section__icon");
+		// console.log(icon);
+
 		const cardElementsToToggle = {
 			"card__title__section__form-wrap": formWrap,
 			"card__title__section__title": titleSection,
@@ -165,6 +168,7 @@ resultsPanel.addEventListener("click", (event) => {
 			"card__date__section__textarea": descriptionTextarea,
 			"card__expand__button__section__button-container": buttonContainer,
 			"card__checkbox__section__checkbox": checkbox,
+			"card__date__section__icon": icon,
 		};
 		dom.toggleHideElement(cardElementsToToggle);
 	}

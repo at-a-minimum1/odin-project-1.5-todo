@@ -6,6 +6,7 @@
 	font-family: inherit;
 	vertical-align: baseline;
 }
+
 /* Primitive Elements */
 button {
 	cursor: pointer;
@@ -16,6 +17,7 @@ button:hover {
 	// background-color: darkturquoise;
 	box-shadow: 0px 0px 0px 0px;
 }
+
 /* Blocks, elements, modifiers */
 // .desktop-wrapper__side-panel {
 // 	display: flex;
@@ -32,6 +34,7 @@ button:hover {
 	background-image: url(./modules/items/ToDoBackground.jpeg);
 	background-size: cover;
 	background-repeat: no-repeat;
+
 	&__side-panel {
 		display: flex;
 		flex-direction: column;
@@ -39,10 +42,12 @@ button:hover {
 		grid-row: span 2;
 		padding: 18px 30px 18px 30px;
 	}
+
 	&__project-display {
 		display: flex;
 		justify-content: space-between;
 	}
+
 	&__navigation-wrap {
 		display: flex;
 		grid-column: span 2;
@@ -51,10 +56,12 @@ button:hover {
 		justify-content: center;
 		font-size: 64px;
 	}
+
 	&__main-panel {
 		background-color: #f1c3c510;
 	}
 }
+
 .side-panel {
 	&__title {
 		font-size: x-large;
@@ -63,6 +70,7 @@ button:hover {
 		font-family: Hammersmith One;
 		font-size: 20px;
 	}
+
 	&__button {
 		background-color: #97e0f6;
 		border-radius: 5px;
@@ -98,34 +106,42 @@ button:hover {
 	// 	}
 	// }
 }
+
 .project-display {
 	justify-content: space-between;
+
 	&__header {
 		background-color: #d9d9d9bf;
 		padding-left: 2rem;
 		padding-right: 2rem;
 		font-size: 18px;
 	}
+
 	&__sort-wrapper {
 		z-index: 1;
 		display: flex;
 		flex-direction: column;
+
 		&__button {
 			font-family: Hammersmith One;
 			background-color: #d9d9d9bf;
 			font-size: 18px;
 			width: 70px;
 			box-shadow: none;
+
 			&:hover {
 				background-color: #d9d9d9;
 			}
 		}
+
 		&__sort-options {
 			display: flex;
 			flex-direction: column;
+
 			&--hidden {
 				display: none;
 			}
+
 			&--shown {
 				display: block;
 			}
@@ -143,11 +159,14 @@ button:hover {
 	align-items: center;
 	margin: 15px 20px 15px 20px;
 	border-radius: 10px;
+
 	&__checkbox__section {
 		display: flex;
 		justify-content: center;
 		align-content: center;
 		padding: 10px 10px 10px 10px;
+		position: relative;
+
 		&--priority--high {
 			background-color: red;
 		}
@@ -159,59 +178,84 @@ button:hover {
 		&--priority--low {
 			background-color: green;
 		}
+
 		&__checkbox {
 			&--hidden {
 				display: none;
 			}
 		}
 	}
+
 	&__title__section {
 		padding: 10px 10px 10px 10px;
 		background-color: #a2caea;
 		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 		margin: 10px 0px 10px 0px;
+
 		&__title {
 			&--hidden {
 				display: none;
 			}
 		}
+
 		&--hidden {
 			display: none;
 		}
+
 		&__form-wrap {
 			display: flex;
 			flex-direction: column;
+
 			&--hidden {
 				display: none;
 			}
 		}
 	}
+
 	&__date__section {
 		padding: 10px 10px 10px 10px;
 		background: #a2caea;
 		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 		margin: 10px 0px 10px 0px;
+		display: flex;
+		justify-content: space-between;
+		height: -webkit-fill-available;
+
+		&__icon {
+			height: 30px;
+			margin: -5px 0px -5px 0px;
+
+			&--hidden {
+				display: none;
+			}
+		}
+
 		&__date {
 			&--hidden {
 				display: none;
 			}
 		}
+
 		&--hidden {
 			display: none;
 		}
+
 		&__header {
 			&--hidden {
 				display: none;
 			}
 		}
+
 		&__textarea {
 			height: 80%;
 			width: 100%;
+
 			&--hidden {
 				display: none;
 			}
 		}
 	}
+
 	&__expand__button__section {
 		padding: 10px 10px 10px 10px;
 		display: flex;
@@ -220,22 +264,32 @@ button:hover {
 		justify-content: space-between;
 		align-content: flex-end;
 		background-color: transparent;
+		height: -webkit-fill-available;
+
 		&--priority--high {
 			background-color: red;
 		}
+
 		&--priority--medium {
 			background-color: yellow;
 		}
+
 		&--priority--low {
 			background-color: green;
 		}
+
 		&__button {
+			display: flex;
+			justify-content: center;
 			background-color: transparent;
+
 			&--hidden {
 				display: none;
 			}
+
 			width: fit-content;
 		}
+
 		&__button-container {
 			display: flex;
 			flex-direction: column;
@@ -243,6 +297,7 @@ button:hover {
 			&--hidden {
 				display: none;
 			}
+
 			&__button {
 				background-color: transparent;
 			}
@@ -252,4 +307,6 @@ button:hover {
 
 .card__expand__button__section__button-container > * {
 	background-color: transparent;
+	margin-top: 8px;
+	border-radius: 5px;
 }

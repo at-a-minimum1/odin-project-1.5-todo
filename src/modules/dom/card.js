@@ -11,6 +11,9 @@ export function createCard(
 	// Icons
 	const editIcon = document.createElement("img");
 	editIcon.src = "../src/modules/items/icons/tabler_edit.svg";
+	const saveIcon = document.createElement("img");
+	saveIcon.src = "../src/modules/items/icons/ant-design_save-outlined.svg";
+
 	const trashIcon = document.createElement("img");
 	trashIcon.src = "../src/modules/items/icons/Vector.svg";
 	const mediumPriorityIcon = document.createElement("img");
@@ -19,6 +22,10 @@ export function createCard(
 	const highPriorityIcon = document.createElement("img");
 	highPriorityIcon.src =
 		"../src/modules/items/icons/flat-color-icons_high-priority.svg";
+
+	// Icon classes
+	mediumPriorityIcon.classList.add("card__date__section__icon");
+	highPriorityIcon.classList.add("card__date__section__icon");
 	// Block
 	const cardWrap = document.createElement("div");
 	cardWrap.classList.add("card");
@@ -157,27 +164,35 @@ export function createCard(
 	);
 	const saveButton = document.createElement("button");
 	saveButton.classList.add(
-		".card__expand__button__section__button-container__save__button"
+		".card__expand__button__section__button-container__button"
 	);
-	saveButton.textContent = "S";
+	
+	// saveButton.textContent = "S";
+	saveButton.appendChild(saveIcon);
 	saveButton.id = `saveButton-${inputTaskId}`;
+	saveIcon.id = `saveButton-${inputTaskId}`;
 
 	const deleteButton = document.createElement("button");
-	deleteButton.classList.add(".button-container__delete__button");
+	deleteButton.classList.add(".card__expand__button__section__button-container__button");
 	deleteButton.id = `deleteButton-${inputTaskId}`;
-	trashIcon.classList.add(".button-container__delete__button");
+	trashIcon.classList.add(".card__expand__button__section__button-container__button");
 	deleteButton.appendChild(trashIcon);
-	// deleteButton.textContent = "Delete";
 
 	buttonContainer.append(saveButton, deleteButton);
 
 	// Block modifiers
-	applyPriorityStyle(checkboxSection, expandButtonSection, inputPriority);
+	// applyPriorityStyle(checkboxSection, expandButtonSection, inputPriority);
 
 	// Append elements
 	checkboxSection.append(checkbox);
 	titleSection.append(title, formWrap);
 	dateSection.append(date, descriptionHeader, descriptionTextarea);
+	if (inputPriority == "high") {
+		dateSection.append(highPriorityIcon);
+	}
+	if (inputPriority == "medium") {
+		dateSection.append(mediumPriorityIcon);
+	}
 	expandButtonSection.append(expandButton, buttonContainer);
 
 	cardWrap.append(
