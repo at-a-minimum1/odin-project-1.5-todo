@@ -90,6 +90,7 @@ resultsPanel.addEventListener("click", (event) => {
 	const taskId = selectedCard.dataset.taskId;
 	const deleteBtn = document.getElementById(`deleteButton-${taskId}`);
 	const saveBtn = document.getElementById(`saveButton-${taskId}`);
+	const checkbox = document.getElementById(`checkbox-${taskId}`);
 
 	const cardInputs = selectedCard.querySelectorAll(
 		".card__title__section__form-wrap__input"
@@ -145,17 +146,14 @@ resultsPanel.addEventListener("click", (event) => {
 		const titleSection = card.querySelector(".card__title__section__title");
 		const formWrap = card.querySelector(".card__title__section__form-wrap");
 		const dateElement = card.querySelector(".card__date__section__date");
-		const descriptionHeader = card.querySelector(
-			".card__date__section__header"
-		);
-		const descriptionTextarea = card.querySelector(
-			".card__date__section__textarea"
-		);
 
+		const descriptionContainer = card.querySelector(
+			".card__date__section__container"
+		);
 		const buttonContainer = card.querySelector(
 			".card__expand__button__section__button-container"
 		);
-		const checkbox = card.querySelector(".card__checkbox__section__checkbox");
+		const checkbox = card.querySelector(".card__checkbox__section__span");
 
 		const icon = card.querySelector(".card__date__section__icon");
 
@@ -163,19 +161,35 @@ resultsPanel.addEventListener("click", (event) => {
 			"card__title__section__form-wrap": formWrap,
 			"card__title__section__title": titleSection,
 			"card__date__section__date": dateElement,
-			"card__date__section__header": descriptionHeader,
-			"card__date__section__textarea": descriptionTextarea,
+			"card__date__section__container": descriptionContainer,
 			"card__expand__button__section__button-container": buttonContainer,
-			"card__checkbox__section__checkbox": checkbox,
+			"card__checkbox__section__span": checkbox,
 			"card__date__section__icon": icon,
 		};
 		dom.toggleHideElement(cardElementsToToggle);
 	}
-});
+	if (event.target === checkbox) {
+		console.log("Checkbox clicked");
+		const taskData = data.getTaskAndListById(taskId);
+		const card = event.target.closest(".card");
 
-document.addEventListener("keydown", function (event) {
-	if (event.key == "Enter") {
-		event.preventDefault();
-		data.addTask();
+		const titleSection = card.querySelector(".card__title__section");
+		const dateSection = card.querySelector(".card__date__section");
+		const cardElementsToToggle = {
+			"card": card,
+			".card__date__section": dateSection,
+			".card__title__section": titleSection,
+		};
+		dom.toggleCompleteElement(cardElementsToToggle);
+
+		// console.log(taskData);
+		// selectedCard.classlist.toggle(".card--complete");
 	}
 });
+
+// document.addEventListener("keydown", function (event) {
+// 	if (event.key == "Enter") {
+// 		event.preventDefault();
+// 		data.addTask();
+// 	}
+// });

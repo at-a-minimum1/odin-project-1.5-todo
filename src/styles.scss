@@ -18,6 +18,13 @@ button:hover {
 	box-shadow: 0px 0px 0px 0px;
 }
 
+.inner-shadow {
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+
+	transition-property: box-shadow;
+	transition-duration: 0.3s;
+	transition-timing-function: ease;
+}
 /* Blocks, elements, modifiers */
 // .desktop-wrapper__side-panel {
 // 	display: flex;
@@ -160,6 +167,14 @@ button:hover {
 	margin: 15px 20px 15px 20px;
 	border-radius: 10px;
 
+	&--complete {
+		// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+		background-color: #a2caea;
+		transition-property: background-color;
+			transition-duration: 0.3s;
+			transition-timing-function: ease;
+	}
+
 	&__checkbox__section {
 		cursor: pointer;
 		display: flex;
@@ -191,9 +206,9 @@ button:hover {
 			height: inherit;
 		}
 		&__checkbox:checked ~ &__span {
-			box-shadow: none;
-			// background-color: red;
-			background-color: #5089be;
+			box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+			// box-shadow: none;
+			// background-color: #5089be;
 		}
 
 		// Custom checkbox styling
@@ -219,17 +234,19 @@ button:hover {
 	&__title__section {
 		padding: 10px 10px 10px 10px;
 		background-color: #a2caea;
-		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+		// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 		margin: 10px 0px 10px 0px;
-
+		border: solid 0.1px rgba(119, 119, 139, 0.63);
+		// &--inner-shadow {
+		// 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+		// }
+		// &--complete {
+		// 	box-shadow: none;
+		// }
 		&__title {
 			&--hidden {
 				display: none;
 			}
-		}
-
-		&--hidden {
-			display: none;
 		}
 
 		&__form-wrap {
@@ -245,12 +262,18 @@ button:hover {
 	&__date__section {
 		padding: 10px 10px 10px 10px;
 		background: #a2caea;
-		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+		// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 		margin: 10px 0px 10px 0px;
 		display: flex;
 		justify-content: space-between;
 		height: -webkit-fill-available;
-
+		border: solid 0.1px rgba(119, 119, 139, 0.63);
+		// &--inner-shadow {
+		// 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+		// }
+		// &--complete {
+		// 	box-shadow: none;
+		// }
 		&__icon {
 			height: 30px;
 			margin: -5px 0px -5px 0px;
@@ -270,18 +293,25 @@ button:hover {
 			display: none;
 		}
 
-		&__header {
+		&__container {
+			width: -webkit-fill-available;
+			padding-right: 10px;
 			&--hidden {
 				display: none;
 			}
-		}
+			&__header {
+				&--hidden {
+					display: none;
+				}
+			}
 
-		&__textarea {
-			height: 80%;
-			width: 100%;
-
-			&--hidden {
-				display: none;
+			&__textarea {
+				padding: 5px;
+				height: 80%;
+				width: 100%;
+				&--hidden {
+					display: none;
+				}
 			}
 		}
 	}
@@ -297,17 +327,17 @@ button:hover {
 		height: -webkit-fill-available;
 
 		// TODO Now that you're using icons to denote priority, you can delete the below modifiers.
-		&--priority--high {
-			background-color: red;
-		}
+		// &--priority--high {
+		// 	background-color: red;
+		// }
 
-		&--priority--medium {
-			background-color: yellow;
-		}
+		// &--priority--medium {
+		// 	background-color: yellow;
+		// }
 
-		&--priority--low {
-			background-color: green;
-		}
+		// &--priority--low {
+		// 	background-color: green;
+		// }
 
 		&__button {
 			display: flex;

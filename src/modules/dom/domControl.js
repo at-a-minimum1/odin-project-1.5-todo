@@ -100,3 +100,19 @@ export function toggleHideElement(elementsToToggle) {
 		}
 	}
 }
+
+export function toggleCompleteElement(elementsToToggle) {
+	for (const className in elementsToToggle) {
+		const element = elementsToToggle[className];
+		// if (className == ".card__title__section") {
+		// 	console.log("entered if loop");
+		// 	element.classList.remove(`${className}--inner-shadow`);
+		// }
+		if (element) {
+			element.classList.toggle(`${className}--complete`);
+			// element.classList.toggle(`${className}--inner-shadow`);
+			element.classList.toggle("inner-shadow");
+			// card__title__section--inner-shadow
+		}
+	}
+}

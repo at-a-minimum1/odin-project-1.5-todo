@@ -46,13 +46,19 @@ export function createCard(
 	customCheckbox.classList.add("card__checkbox__section__span");
 
 	const titleSection = document.createElement("div");
-	titleSection.classList.add("card__title__section");
+	titleSection.classList.add(
+		"card__title__section",
+		"inner-shadow"
+	);
 	const title = document.createElement("h1");
 	title.classList.add("card__title__section__title");
 	title.textContent = inputTitle;
 
 	const dateSection = document.createElement("div");
-	dateSection.classList.add("card__date__section");
+	dateSection.classList.add(
+		"card__date__section",
+		"inner-shadow"
+	);
 	const date = document.createElement("h1");
 	date.classList.add("card__date__section__date");
 	const formattedDate = format(new Date(inputDate), "MM/dd/yyyy");
@@ -142,18 +148,18 @@ export function createCard(
 	);
 
 	// Description area
-	const descriptionHeader = document.createElement("h3");
-	descriptionHeader.classList.add(
-		"card__date__section__header",
-		"card__date__section__header--hidden"
+	const descriptionContainer = document.createElement("div");
+	descriptionContainer.classList.add(
+		"card__date__section__container",
+		"card__date__section__container--hidden"
 	);
+
+	const descriptionHeader = document.createElement("h3");
+	descriptionHeader.classList.add("card__date__section__container__header");
 	descriptionHeader.textContent = "Description";
 
 	const descriptionTextarea = document.createElement("textarea");
-	descriptionTextarea.classList.add(
-		"card__date__section__textarea",
-		"card__date__section__textarea--hidden"
-	);
+	descriptionTextarea.classList.add("card__date__section__container__textarea");
 	descriptionTextarea.value = inputDescription;
 
 	// Save and Delete buttons
@@ -190,7 +196,9 @@ export function createCard(
 	// Append elements
 	checkboxSection.append(checkbox, customCheckbox);
 	titleSection.append(title, formWrap);
-	dateSection.append(date, descriptionHeader, descriptionTextarea);
+	descriptionContainer.append(descriptionHeader, descriptionTextarea);
+	// dateSection.append(date, descriptionHeader, descriptionTextarea);
+	dateSection.append(date, descriptionContainer);
 	if (inputPriority == "high") {
 		dateSection.append(highPriorityIcon);
 	}
