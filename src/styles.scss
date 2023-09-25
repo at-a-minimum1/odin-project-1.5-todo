@@ -35,12 +35,14 @@ button:hover {
 // }
 .desktop-wrapper {
 	display: grid;
+	position: sticky;
 	grid-template-columns: 0.25fr 1fr;
 	grid-template-rows: 100px 20px 1fr;
 	height: 100vh;
 	background-image: url(./modules/items/ToDoBackground.jpeg);
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-color: #acb3c5;
 
 	&__side-panel {
 		display: flex;
@@ -171,8 +173,14 @@ button:hover {
 		// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 		background-color: #a2caea;
 		transition-property: background-color;
-			transition-duration: 0.3s;
-			transition-timing-function: ease;
+		transition-duration: 0.3s;
+		transition-timing-function: ease;
+	}
+	// TODO modify the below to only apply line through to the title and date headers.
+	&--complete > * {
+		opacity: 0.8;
+		text-decoration: line-through;
+		color: #0000009c;
 	}
 
 	&__checkbox__section {
@@ -209,6 +217,10 @@ button:hover {
 			box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 			// box-shadow: none;
 			// background-color: #5089be;
+			// background-color: #ffffff;
+			// transition-property: background-color;
+			// transition-duration: 0.3s;
+			// transition-timing-function: ease;
 		}
 
 		// Custom checkbox styling

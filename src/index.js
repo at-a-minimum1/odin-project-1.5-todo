@@ -99,7 +99,7 @@ resultsPanel.addEventListener("click", (event) => {
 		".card__title__section__form-wrap__select"
 	);
 	const cardInputDescription = selectedCard.querySelector(
-		".card__date__section__textarea"
+		".card__date__section__container__textarea"
 	);
 
 	deleteBtn.addEventListener("click", () => {

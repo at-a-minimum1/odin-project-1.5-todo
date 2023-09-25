@@ -41,24 +41,20 @@ export function createCard(
 	checkbox.setAttribute("type", "checkbox");
 	checkbox.classList.add("card__checkbox__section__checkbox");
 	checkbox.id = checkboxId;
+	// checkbox.checked = true;
+	if(inputComplete === true) {checkbox.checked = true};
 	// Custom checkbox //
 	const customCheckbox = document.createElement("span");
 	customCheckbox.classList.add("card__checkbox__section__span");
 
 	const titleSection = document.createElement("div");
-	titleSection.classList.add(
-		"card__title__section",
-		"inner-shadow"
-	);
+	titleSection.classList.add("card__title__section", "inner-shadow");
 	const title = document.createElement("h1");
 	title.classList.add("card__title__section__title");
 	title.textContent = inputTitle;
 
 	const dateSection = document.createElement("div");
-	dateSection.classList.add(
-		"card__date__section",
-		"inner-shadow"
-	);
+	dateSection.classList.add("card__date__section", "inner-shadow");
 	const date = document.createElement("h1");
 	date.classList.add("card__date__section__date");
 	const formattedDate = format(new Date(inputDate), "MM/dd/yyyy");
