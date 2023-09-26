@@ -12,6 +12,7 @@ export function getFormData() {
 		date: taskDate,
 		priority: taskPriority,
 		description: taskDescription,
+		complete: false,
 	};
 	return formData;
 }
@@ -23,7 +24,8 @@ export function addToMainPanel(task) {
 		task.date,
 		task.priority,
 		task.description,
-		task.id
+		task.id,
+		task.complete
 	);
 	mainPanel.append(newCard);
 }
@@ -101,18 +103,13 @@ export function toggleHideElement(elementsToToggle) {
 	}
 }
 
+//TODO Use the following function to be used when the cards are added to the main panel
 export function toggleCompleteElement(elementsToToggle) {
 	for (const className in elementsToToggle) {
 		const element = elementsToToggle[className];
-		// if (className == ".card__title__section") {
-		// 	console.log("entered if loop");
-		// 	element.classList.remove(`${className}--inner-shadow`);
-		// }
 		if (element) {
 			element.classList.toggle(`${className}--complete`);
-			// element.classList.toggle(`${className}--inner-shadow`);
 			element.classList.toggle("inner-shadow");
-			// card__title__section--inner-shadow
 		}
 	}
 }

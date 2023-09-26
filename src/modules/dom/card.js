@@ -1,12 +1,14 @@
 // BEM stands for Block Element Modifier, and it is a popular naming convention and methodology for writing maintainable and scalable CSS code. BEM helps create a clear and understandable class naming structure by following a specific pattern.
-import { format, toISOString } from "date-fns";
+import { format } from "date-fns";
+import { utcToZonedTime, zonedTimeToUtc } from "date-fns-tz";
 
 export function createCard(
 	inputTitle,
 	inputDate,
 	inputPriority,
 	inputDescription,
-	inputTaskId
+	inputTaskId,
+	inputComplete
 ) {
 	// Icons
 	const editIcon = document.createElement("img");
@@ -42,19 +44,28 @@ export function createCard(
 	checkbox.classList.add("card__checkbox__section__checkbox");
 	checkbox.id = checkboxId;
 	// checkbox.checked = true;
-	if(inputComplete === true) {checkbox.checked = true};
+
 	// Custom checkbox //
 	const customCheckbox = document.createElement("span");
 	customCheckbox.classList.add("card__checkbox__section__span");
 
 	const titleSection = document.createElement("div");
-	titleSection.classList.add("card__title__section", "inner-shadow");
+	titleSection.classList.add("card__title__section");
 	const title = document.createElement("h1");
 	title.classList.add("card__title__section__title");
 	title.textContent = inputTitle;
 
 	const dateSection = document.createElement("div");
-	dateSection.classList.add("card__date__section", "inner-shadow");
+
+	dateSection.classList.add("card__date__section");
+	// Change the style of the card based on if the task is complete or not
+	if (inputComplete === false) {
+		titleSection.classList.add("inner-shadow");
+		dateSection.classList.add("inner-shadow");
+	} else {
+		checkbox.checked = true;
+		cardWrap.classList.add("card--complete", "inner-shadow");
+	}
 	const date = document.createElement("h1");
 	date.classList.add("card__date__section__date");
 	const formattedDate = format(new Date(inputDate), "MM/dd/yyyy");

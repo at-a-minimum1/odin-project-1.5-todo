@@ -69,6 +69,11 @@ function handleSortClick(sortBy) {
 	let sortedArray = data.sortTasks(currentProject, sortBy);
 	dom.clearMainPanel();
 	dom.updateMainPanel(sortedArray);
+	const sortOptions = document.getElementById("sort-options");
+	const elementsToToggle = {
+		"project-display__sort-wrapper__sort-options": sortOptions,
+	};
+	dom.toggleHideElement(elementsToToggle);
 }
 
 const sortButtons = document.querySelectorAll(
@@ -181,7 +186,11 @@ resultsPanel.addEventListener("click", (event) => {
 			".card__title__section": titleSection,
 		};
 		dom.toggleCompleteElement(cardElementsToToggle);
-
+		console.log(taskData.task.complete);
+		// if (taskData.task.complete === true) {
+		data.toggleComplete(taskId);
+		// taskData.task.complete = false;
+		// }
 		// console.log(taskData);
 		// selectedCard.classlist.toggle(".card--complete");
 	}

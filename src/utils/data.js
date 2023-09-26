@@ -33,7 +33,8 @@ export function addTask(formData) {
 		formData.title,
 		formData.date,
 		formData.priority,
-		formData.description
+		formData.description,
+		formData.complete
 	);
 	let currentProject = getCurrentProject();
 	let tempProject = currentProject.array;
@@ -170,5 +171,15 @@ export function updateTask(
 	task.priority = inputPriority;
 	task.description = inputDescription;
 
+	saveData("project-data", projectData);
+}
+
+export function toggleComplete(taskId) {
+	const { taskList, taskIndex, task } = getTaskAndListById(taskId);
+	if (task.complete === true) {
+		task.complete = false;
+	} else {
+		task.complete = true;
+	}
 	saveData("project-data", projectData);
 }
