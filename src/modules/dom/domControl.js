@@ -103,7 +103,6 @@ export function toggleHideElement(elementsToToggle) {
 	}
 }
 
-//TODO Use the following function to be used when the cards are added to the main panel
 export function toggleCompleteElement(elementsToToggle) {
 	for (const className in elementsToToggle) {
 		const element = elementsToToggle[className];

@@ -135,6 +135,14 @@ export function createCard(
 	formInputDate.setAttribute("type", "date");
 	formInputDate.setAttribute("id", "formDate");
 	formInputDate.classList.add("card__title__section__form-wrap__input");
+	// TODO update the date to factor in the time zone the user is in.
+	const inputDateUtc = zonedTimeToUtc(inputDate, "UTC");
+
+	const formattedTimeZonedDate = format(
+		utcToZonedTime(inputDateUtc, "America/New_York"),
+		"MM/dd/yyyy"
+	);
+	console.log("Formated date: " + formattedTimeZonedDate);
 
 	let dateString;
 	if (typeof inputDate == "string") {
@@ -197,9 +205,6 @@ export function createCard(
 
 	buttonContainer.append(saveButton, deleteButton);
 
-	// Block modifiers
-	// applyPriorityStyle(checkboxSection, expandButtonSection, inputPriority);
-
 	// Append elements
 	checkboxSection.append(checkbox, customCheckbox);
 	titleSection.append(title, formWrap);
@@ -246,3 +251,19 @@ export function applyPriorityStyle(
 	expandButtonSection.classList.add(priorityClassExpandButton);
 	checkboxSection.classList.add(priorityClassCheckbox);
 }
+
+// TODO Delete the below ChatGPT solution to the date bug. Of course modify the below code.
+
+// import { format } from "date-fns";
+// import { utcToZonedTime, zonedTimeToUtc } from "date-fns-tz";
+
+// // Convert the inputDate to a JavaScript Date object (assuming inputDate is in UTC time)
+// const inputDateUtc = zonedTimeToUtc(inputDate, "UTC");
+
+// // Format the date in the desired time zone (e.g., "America/New_York")
+// const formattedDate = format(utcToZonedTime(inputDateUtc, "America/New_York"), "MM/dd/yyyy");
+
+// // Create the date element
+// const date = document.createElement("h1");
+// date.classList.add("card__date__section__date");
+// date.textContent = formattedDate;

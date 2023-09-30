@@ -174,7 +174,6 @@ resultsPanel.addEventListener("click", (event) => {
 		dom.toggleHideElement(cardElementsToToggle);
 	}
 	if (event.target === checkbox) {
-		console.log("Checkbox clicked");
 		const taskData = data.getTaskAndListById(taskId);
 		const card = event.target.closest(".card");
 
@@ -186,19 +185,8 @@ resultsPanel.addEventListener("click", (event) => {
 			".card__title__section": titleSection,
 		};
 		dom.toggleCompleteElement(cardElementsToToggle);
-		console.log(taskData.task.complete);
-		// if (taskData.task.complete === true) {
-		data.toggleComplete(taskId);
-		// taskData.task.complete = false;
-		// }
-		// console.log(taskData);
-		// selectedCard.classlist.toggle(".card--complete");
+		data.toggleComplete(taskId);	
 	}
 });
 
-// document.addEventListener("keydown", function (event) {
-// 	if (event.key == "Enter") {
-// 		event.preventDefault();
-// 		data.addTask();
-// 	}
-// });
+
