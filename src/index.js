@@ -9,12 +9,14 @@ window.onload = () => {
 	dom.updateMainPanel(projectData[0]);
 };
 
-const projectDropdown = document.getElementById("project-list");
-projectDropdown.addEventListener("change", (event) => {
-	let currentProject = data.getCurrentProject();
-	dom.clearMainPanel();
-	dom.updateMainPanel(currentProject);
-});
+// const projectList = document.getElementById("project-list");
+// projectList.addEventListener("change", (event) => {
+// 	// TODO delete the following console log statement
+// 	let currentProject = data.getCurrentProject();
+// 	dom.clearMainPanel();
+// 	dom.updateMainPanel(currentProject);
+// 	console.log(currentProject);
+// });
 
 const addTaskButton = document.getElementById("add-task");
 addTaskButton.addEventListener("click", (event) => {
@@ -23,6 +25,7 @@ addTaskButton.addEventListener("click", (event) => {
 
 	const newTask = data.addTask(formData);
 	dom.addToMainPanel(newTask);
+	dom.clearForm();
 });
 
 const addProjectButton = document.getElementById("add-project");
@@ -32,8 +35,17 @@ addProjectButton.addEventListener("click", (event) => {
 	dom.addToProjectList();
 });
 
+const projectDropdownButton = document.getElementById("project-dropdown");
+projectDropdownButton.addEventListener("click", () => {
+	const projectOptions = document.getElementById("project-options");
+	const elementsToToggle = {
+		"project-display__project-wrapper__project-options": projectOptions,
+	};
+	dom.toggleHideElement(elementsToToggle);
+});
+
 const sortDropdownButton = document.getElementById("sort-dropdown");
-sortDropdownButton.addEventListener("click", (event) => {
+sortDropdownButton.addEventListener("click", () => {
 	// Toggle hidden elements
 	const sortOptions = document.getElementById("sort-options");
 	const elementsToToggle = {
@@ -49,7 +61,7 @@ todayButton.addEventListener("click", () => {
 
 const nextWeekButton = document.getElementById("next-week-button");
 nextWeekButton.addEventListener("click", () => {
-	handleFilterClick("Next Week");
+	handleFilterClick("This Week");
 });
 
 const importantButton = document.getElementById("important-button");
@@ -185,8 +197,52 @@ resultsPanel.addEventListener("click", (event) => {
 			".card__title__section": titleSection,
 		};
 		dom.toggleCompleteElement(cardElementsToToggle);
-		data.toggleComplete(taskId);	
+		data.toggleComplete(taskId);
 	}
 });
+const projectHeader = document.getElementById("project-header");
+projectHeader.addEventListener("click", (event) => {
+	const newProjectInput = document.getElementById("input-project");
+	const newProjectButton = document.getElementById("add-project-button");
+	newProjectButton.addEventListener("click", () => {
+		console.log(newProjectInput.value);
+	});
+	if (
+		event.target.matches(
+			".project-display__project-wrapper__project-options__wrapper__button"
+		)
+	) {
+		const selectedProject = data.getProjectFromData(event.target.value);
+		dom.clearMainPanel();
+		dom.updateMainPanel(selectedProject);
+	}
+	if (
+		event.target.matches(
+			".project-display__project-wrapper__project-options__wrapper__delete-button"
+		)
+	) {
+		const dialogueBox = dom.createConfirmDialogueBox();
+		// event.target.appendChild(dialogueBox);
+		const projectOptions = document.getElementById("project-options");
+		// const projectOptions = document.getElementById("project-dropdown");
+		// const selectedProject = document.getElementById("project-options");
 
-
+		projectOptions.appendChild(dialogueBox);
+		// event.target.appendChild(dialogueBox);
+		// data.deleteProject(event.target.value);
+		// const projectData = data.getProjectData();
+		// dom.clearProjectList();
+		// dom.instantiateProjectList(projectData);
+	}
+	if (
+		event.target.matches(
+			".project-display__project-wrapper__project-options__wrapper__add-button"
+		)
+	) {
+		data.addProject();
+		dom.clearProjectList();
+		const projectData = data.getProjectData();
+		dom.instantiateProjectList(projectData);
+		console.log("add button");
+	}
+});

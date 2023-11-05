@@ -50,6 +50,7 @@ export function removeTask(taskId) {
 	const { taskList, taskIndex, task } = getTaskAndListById(taskId);
 
 	taskList.array.splice(taskIndex, 1);
+
 	saveData("project-data", projectData);
 }
 
@@ -106,7 +107,7 @@ export function filterTasks(filterBy) {
 	switch (filterBy) {
 		case "Today":
 			return allTasks.filter((task) => isToday(new Date(task.date)));
-		case "Next Week":
+		case "This Week":
 			return allTasks.filter((task) =>
 				isWithinInterval(new Date(task.date), { start: today, end: nextWeek })
 			);
@@ -118,7 +119,7 @@ export function filterTasks(filterBy) {
 }
 
 export function getCurrentProject() {
-	const projectList = document.getElementById("project-list");
+	const projectList = document.getElementById("project-dropdown");
 	const currentProject = projectList.value;
 	const currentProjectArray = getProjectFromData(currentProject);
 
@@ -138,12 +139,13 @@ export function getProjectFromData(project) {
 }
 
 export function addProject() {
-	const projectTitle = document.getElementById("project-title").value;
-	const newTaskList = new TaskList(projectTitle, []);
+	// const projectInput = document.getElementById("project-title").value;
+	const projectInput = document.getElementById("input-project").value;
+	const newTaskList = new TaskList(projectInput, []);
 
 	let existingProjectName = false;
 	for (const project of projectData) {
-		if (project.title === projectTitle) {
+		if (project.title === projectInput) {
 			existingProjectName = true;
 			break;
 		}
@@ -152,10 +154,44 @@ export function addProject() {
 		projectData.push(newTaskList);
 		saveData("project-data", projectData);
 	} else {
+		// TODO move this to a modal
 		console.error(
 			"Project title already exists. Please choose a different title!"
 		);
 	}
+}
+// TODO finish this delete project function
+export function deleteProject(inputProject) {
+	const selectedProject = getProjectFromData(inputProject);
+	let projectDataArray = Object.values(projectData);
+	// let projectDataArray = [...projectData.array];
+	// projectData;
+
+	// const projectIndex = projectData.array.findIndex(selectedProject);
+	// if (projectIndex != -1) {
+	// 	projectData.array.splice(projectIndex, 1);
+	// 	saveData("project-data", projectData);
+	// }
+
+	let projectIndex = 0;
+	for (const project of projectData) {
+		if (project === selectedProject) {
+			let testRemove = Object.values(project);
+			console.log(testRemove);
+			console.log(projectDataArray);
+			// projectDataArray.array.splice(projectIndex, 1);
+			projectDataArray.splice(projectIndex, 1);
+			console.log(projectDataArray);
+			projectData = projectDataArray;
+			saveData("project-data", projectData);
+		}
+		projectIndex++;
+	}
+
+	// const { taskList, taskIndex, task } = getTaskAndListById(taskId);
+
+	// taskList.array.splice(taskIndex, 1);
+	// saveData("project-data", projectData);
 }
 
 export function updateTask(

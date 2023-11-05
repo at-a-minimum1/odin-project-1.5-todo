@@ -14,7 +14,6 @@ button {
 }
 
 button:hover {
-	// background-color: darkturquoise;
 	box-shadow: 0px 0px 0px 0px;
 }
 
@@ -33,10 +32,11 @@ button:hover {
 // 	background-color: azure;
 // 	grid-row: span 2;
 // }
+// project-display__project-wrapper__project-options__wrapper
 .desktop-wrapper {
 	display: grid;
 	position: sticky;
-	grid-template-columns: 0.25fr 1fr;
+	grid-template-columns: 0.2fr 1fr;
 	grid-template-rows: 100px 20px 1fr;
 	height: 100vh;
 	background-image: url(./modules/items/ToDoBackground.jpeg);
@@ -73,7 +73,7 @@ button:hover {
 
 .side-panel {
 	&__title {
-		font-size: x-large;
+		// font-size: x-large;
 		display: flex;
 		justify-content: flex-start;
 		font-family: Hammersmith One;
@@ -90,16 +90,16 @@ button:hover {
 		font-weight: bold;
 	}
 
-	// &__header {
-	// }
-
 	// &__project-list-wrapper {
 	// }
 	&__form {
 		display: flex;
 		flex-direction: column;
-		// 	&__label {
-		// 	}
+		font-family: Hammersmith One;
+		font-size: 20px;
+		&__label {
+			padding-top: 2.5px;
+		}
 		// 	&__input {
 		// 	}
 		// 	&__select {
@@ -110,6 +110,10 @@ button:hover {
 		// 	}
 	}
 
+	&__header {
+		padding-top: 2.5px;
+	}
+
 	// &__button-wrapper {
 	// 	&__button {
 	// 	}
@@ -118,7 +122,45 @@ button:hover {
 
 .project-display {
 	justify-content: space-between;
-
+	&__project-wrapper {
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		&__button {
+			background-color: #d9d9d9bf;
+			padding-left: 2rem;
+			padding-right: 2rem;
+			font-size: 18px;
+			box-shadow: none;
+			width: 207px;
+			&:hover {
+				background-color: #d9d9d9;
+			}
+		}
+		&__project-options {
+			display: flex;
+			flex-direction: column;
+			z-index: 1;
+			&--hidden {
+				display: none;
+			}
+			&__wrapper {
+				padding: 1px 0 1px 0;
+				display: flex;
+				justify-content: space-between;
+				background-color: #d9d9d9;
+				&__button {
+					box-shadow: none;
+					width: -webkit-fill-available;
+					justify-items: flex-start;
+					background-color: #d9d9d9;
+					&:hover {
+						background-color: #e9e9e9;
+					}
+				}
+			}
+		}
+	}
 	&__header {
 		background-color: #d9d9d9bf;
 		padding-left: 2rem;
@@ -155,6 +197,14 @@ button:hover {
 				display: block;
 			}
 		}
+	}
+}
+.sort-wrapper__sort-options__button {
+	background-color: #d9d9d9;
+	box-shadow: none;
+	padding-top: 1.5px;
+	&:hover {
+		background-color: #e9e9e9;
 	}
 }
 
@@ -382,4 +432,17 @@ button:hover {
 	background-color: transparent;
 	margin-top: 8px;
 	border-radius: 5px;
+}
+
+.dialogue-box-wrapper {
+	max-width: 207px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: #d9d9d9;
+	&__button-wrapper {
+		width: -webkit-fill-available;
+		display: flex;
+		justify-content: space-around;
+	}
 }

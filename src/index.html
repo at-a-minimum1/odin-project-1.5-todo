@@ -22,15 +22,7 @@
 				<button id="important-button" class="side-panel__button">
 					Important
 				</button>
-				<h3 class="side-panel__header" class="side-panel__header">
-					--Projects--
-				</h3>
-				<div class="side-panel__project-list-wrapper">
-					<select
-						id="project-list"
-						class="project-list-wrapper__select"
-					></select>
-				</div>
+
 				<!-- Form elements go here -->
 				<form id="task-form" class="side-panel__form">
 					<label for="task-title" class="side-panel__form__label"
@@ -84,7 +76,7 @@
 					</div>
 				</form>
 				<h3 class="side-panel__header">--Projects--</h3>
-
+				<!-- TODO delete all corresponding code that references the below segment -->
 				<form id="project-form" class="side-panel__project__form">
 					<label for="project-title" class="side-panel__project__form__label"
 						>Project Title</label
@@ -105,17 +97,24 @@
 				</form>
 			</div>
 			<div class="desktop-wrapper__project-display">
-				<h1 id="project-header" class="project-display__header">
+				<div id="project-header" class="project-display__project-wrapper">
 					<!-- Current Project -->
-					<select id="project-list" class="project-list-wrapper__select">
-						<option value="project1">Project 1</option>
-						<option value="project2">Project 2</option>
-						<option value="project3">Project 3</option>
-						<option value="project4">Project 4</option>
-						<option value="project5">Project 5</option>
-						<option value="project6">Project 6</option>
-					</select>
-				</h1>
+					<button
+						class="project-display__project-wrapper__button"
+						id="project-dropdown"
+					>
+						Current Project
+					</button>
+					<div
+						class="project-display__project-wrapper__project-options project-display__project-wrapper__project-options--hidden"
+						id="project-options"
+					>
+						<!-- <select
+							id="project-list"
+							class="project-list-wrapper__select"
+						></select> -->
+					</div>
+				</div>
 				<div class="project-display__sort-wrapper">
 					<button
 						id="sort-dropdown"
@@ -155,6 +154,5 @@
 				<!-- Tasks will be displayed here -->
 			</div>
 		</div>
-		<!-- <script src="main.js"></script> -->
 	</body>
 </html>

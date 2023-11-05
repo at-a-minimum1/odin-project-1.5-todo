@@ -142,7 +142,11 @@ export function createCard(
 		utcToZonedTime(inputDateUtc, "America/New_York"),
 		"MM/dd/yyyy"
 	);
-	console.log("Formated date: " + formattedTimeZonedDate);
+	// BUG Fix the below bug where the input date is turned into a day before. It's probably in the index.js file.
+
+	// console.log("Input date: " + inputDate); //Input date: Sat Sep 30 2023 05:29:50 GMT-0400 (Eastern Daylight Time)
+
+	// console.log("Formatted date: " + formattedTimeZonedDate); //Formatted date: 09/30/2023
 
 	let dateString;
 	if (typeof inputDate == "string") {
