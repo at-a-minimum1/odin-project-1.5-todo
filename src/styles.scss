@@ -446,3 +446,17 @@ button:hover {
 		justify-content: space-around;
 	}
 }
+
+.project-display__project-wrapper {
+	// display: flex;
+	display: -webkit-box;
+	// grid-template-columns: 1fr 1fr;
+	&__project-panel {
+		// display: flex;
+	}
+	&__shadow-panel {
+		background-color: #97e0f6;
+	}
+}
+
+// TODO match the side panel to the following: https: //codepen.io/at-a-minimum1/pen/gOqLBxy 
