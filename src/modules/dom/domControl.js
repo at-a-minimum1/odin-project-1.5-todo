@@ -92,28 +92,14 @@ export function clearProjectList() {
 }
 
 export function instantiateProjectList(projectData) {
+	// TODO Change the project-options to projectOptions in the html and subsequent functions that still call project-options as the id
 	const projectOptions = document.getElementById("project-options");
+	const hiddenProjectOptions = document.getElementById("hiddenProjectOptions");
 
 	projectData.forEach((project) => {
-		const optionWrapper = document.createElement("div");
-		optionWrapper.classList.add(
-			"project-display__project-wrapper__project-options__wrapper"
-		);
-		const projectOptionButton = document.createElement("button");
-		projectOptionButton.classList.add(
-			"project-display__project-wrapper__project-options__wrapper__button"
-		);
-		projectOptionButton.value = project.title;
-		projectOptionButton.textContent = project.title;
-		const deleteButton = document.createElement("button");
-		deleteButton.textContent = "X";
-		deleteButton.value = project.title;
-		deleteButton.classList.add(
-			"project-display__project-wrapper__project-options__wrapper__delete-button"
-		);
-
-		optionWrapper.appendChild(projectOptionButton);
-		optionWrapper.appendChild(deleteButton);
+		let optionWrapper = createProjectOption(project);
+		let menuWrapper = createProjectOptionMenu(project);
+		hiddenProjectOptions.appendChild(menuWrapper);
 		projectOptions.appendChild(optionWrapper);
 	});
 
@@ -130,6 +116,75 @@ export function instantiateProjectList(projectData) {
 	inputWrapper.appendChild(inputProject);
 	inputWrapper.appendChild(addButton);
 	projectOptions.appendChild(inputWrapper);
+}
+
+// Creates and returns html elements that are project buttons
+function createProjectOption(project) {
+	const optionWrapper = document.createElement("div");
+	optionWrapper.classList.add(
+		"project-display__project-wrapper__project-options__wrapper"
+	);
+	const projectOptionButton = document.createElement("button");
+	projectOptionButton.classList.add(
+		"project-display__project-wrapper__project-options__wrapper__button"
+	);
+	projectOptionButton.value = project.title;
+	projectOptionButton.textContent = project.title;
+	const deleteButton = document.createElement("button");
+	deleteButton.textContent = "X";
+	deleteButton.value = project.title;
+	deleteButton.classList.add(
+		"project-display__project-wrapper__project-options__wrapper__delete-button"
+	);
+
+	optionWrapper.appendChild(projectOptionButton);
+	optionWrapper.appendChild(deleteButton);
+
+	return optionWrapper;
+}
+// Creates html elements that contain the buttons to delete and edit the projects
+function createProjectOptionMenu(project) {
+	const optionWrapper = document.createElement("div");
+	const buttonWrapper = document.createElement("div");
+
+	const dialogueHeader = document.createElement("h3");
+	dialogueHeader.innerText = `Delete ${project.title}?`;
+
+	const deleteButton = document.createElement("button");
+	const cancelButton = document.createElement("button");
+	deleteButton.innerText = "Delete";
+	cancelButton.innerText = "Cancel";
+
+	// TODO Add event listeners here?
+	// cancelButton.addEventListener();
+	// deleteButton.addEventListener();
+
+	optionWrapper.value = project.title;
+	optionWrapper.classList.add("shadow-panel__option-wrapper");
+	optionWrapper.classList.add("shadow-panel__option-wrapper--hidden");
+	dialogueHeader.classList.add("shadow-panel__option-wrapper__header");
+	buttonWrapper.classList.add("shadow-panel__option-wrapper__button-wrapper");
+	deleteButton.classList.add(
+		"shadow-panel__option-wrapper__button-wrapper__button"
+	);
+	cancelButton.classList.add(
+		"shadow-panel__option-wrapper__button-wrapper__button"
+	);
+
+	const projectTitleNoSpace = project.title.replace(/ /g, "");
+
+	// deleteButton.id = `delete-${project.title}`;
+	deleteButton.id = `delete-${projectTitleNoSpace}`;
+	cancelButton.id = `cancel-${projectTitleNoSpace}`;
+	optionWrapper.id = `wrapper-${projectTitleNoSpace}`;
+
+	buttonWrapper.appendChild(deleteButton);
+	buttonWrapper.appendChild(cancelButton);
+
+	// optionWrapper.appendChild(dialogueHeader);
+	optionWrapper.appendChild(buttonWrapper);
+
+	return optionWrapper;
 }
 
 export function toggleHideElement(elementsToToggle) {
@@ -163,22 +218,23 @@ export function clearForm() {
 	descriptionForm.value = "";
 }
 
-export function createConfirmDialogueBox() {
-	const dialogueBoxWrapper = document.createElement("div");
-	dialogueBoxWrapper.classList.add("dialogue-box-wrapper");
-	const promptHeader = document.createElement("h6");
-	promptHeader.innerText = "Are you sure you want to delete this project?";
+// TODO Delete the following function
+// export function createConfirmDialogueBox() {
+// 	const dialogueBoxWrapper = document.createElement("div");
+// 	dialogueBoxWrapper.classList.add("dialogue-box-wrapper");
+// 	const promptHeader = document.createElement("h6");
+// 	promptHeader.innerText = "Are you sure you want to delete this project?";
 
-	const buttonWrapper = document.createElement("div");
-	buttonWrapper.classList.add("dialogue-box-wrapper__button-wrapper");
-	const confirmButton = document.createElement("button");
-	confirmButton.textContent = "Delete";
-	const cancelButton = document.createElement("button");
-	cancelButton.textContent = "Cancel";
-	buttonWrapper.appendChild(confirmButton);
-	buttonWrapper.appendChild(cancelButton);
-	// dialogueBoxWrapper.appendChild(promptHeader, confirmButton, cancelButton);
-	dialogueBoxWrapper.appendChild(promptHeader);
-	dialogueBoxWrapper.appendChild(buttonWrapper);
-	return dialogueBoxWrapper;
-}
+// 	const buttonWrapper = document.createElement("div");
+// 	buttonWrapper.classList.add("dialogue-box-wrapper__button-wrapper");
+// 	const confirmButton = document.createElement("button");
+// 	confirmButton.textContent = "Delete";
+// 	const cancelButton = document.createElement("button");
+// 	cancelButton.textContent = "Cancel";
+// 	buttonWrapper.appendChild(confirmButton);
+// 	buttonWrapper.appendChild(cancelButton);
+// 	// dialogueBoxWrapper.appendChild(promptHeader, confirmButton, cancelButton);
+// 	dialogueBoxWrapper.appendChild(promptHeader);
+// 	dialogueBoxWrapper.appendChild(buttonWrapper);
+// 	return dialogueBoxWrapper;
+// }

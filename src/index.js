@@ -221,18 +221,18 @@ projectHeader.addEventListener("click", (event) => {
 			".project-display__project-wrapper__project-options__wrapper__delete-button"
 		)
 	) {
-		const dialogueBox = dom.createConfirmDialogueBox();
-		// event.target.appendChild(dialogueBox);
-		const projectOptions = document.getElementById("project-options");
-		// const projectOptions = document.getElementById("project-dropdown");
-		// const selectedProject = document.getElementById("project-options");
+		// Expand the div to the right by making the dialogue box visible.
+		const projectTitle = event.target.value;
+		const projectTitleNoSpace = projectTitle.replace(/ /g, "");
 
-		projectOptions.appendChild(dialogueBox);
-		// event.target.appendChild(dialogueBox);
-		// data.deleteProject(event.target.value);
-		// const projectData = data.getProjectData();
-		// dom.clearProjectList();
-		// dom.instantiateProjectList(projectData);
+		const optionWrapper = document.getElementById(
+			`wrapper-${projectTitleNoSpace}`
+		);
+		// console.log(optionWrapper);
+		const elementsToToggle = {
+			"shadow-panel__option-wrapper": optionWrapper,
+		};
+		dom.toggleHideElement(elementsToToggle);
 	}
 	if (
 		event.target.matches(
