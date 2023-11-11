@@ -164,34 +164,21 @@ export function addProject() {
 export function deleteProject(inputProject) {
 	const selectedProject = getProjectFromData(inputProject);
 	let projectDataArray = Object.values(projectData);
-	// let projectDataArray = [...projectData.array];
-	// projectData;
-
-	// const projectIndex = projectData.array.findIndex(selectedProject);
-	// if (projectIndex != -1) {
-	// 	projectData.array.splice(projectIndex, 1);
-	// 	saveData("project-data", projectData);
-	// }
 
 	let projectIndex = 0;
 	for (const project of projectData) {
 		if (project === selectedProject) {
 			let testRemove = Object.values(project);
-			console.log(testRemove);
-			console.log(projectDataArray);
+			// console.log(testRemove);
+			// console.log(projectDataArray);
 			// projectDataArray.array.splice(projectIndex, 1);
 			projectDataArray.splice(projectIndex, 1);
-			console.log(projectDataArray);
+			// console.log(projectDataArray);
 			projectData = projectDataArray;
 			saveData("project-data", projectData);
 		}
 		projectIndex++;
 	}
-
-	// const { taskList, taskIndex, task } = getTaskAndListById(taskId);
-
-	// taskList.array.splice(taskIndex, 1);
-	// saveData("project-data", projectData);
 }
 
 export function updateTask(

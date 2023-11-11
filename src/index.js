@@ -28,12 +28,12 @@ addTaskButton.addEventListener("click", (event) => {
 	dom.clearForm();
 });
 
-const addProjectButton = document.getElementById("add-project");
-addProjectButton.addEventListener("click", (event) => {
-	event.preventDefault();
-	data.addProject();
-	dom.addToProjectList();
-});
+// const addProjectButton = document.getElementById("add-project");
+// addProjectButton.addEventListener("click", (event) => {
+// 	event.preventDefault();
+// 	data.addProject();
+// 	dom.addToProjectList();
+// });
 
 const projectDropdownButton = document.getElementById("project-dropdown");
 projectDropdownButton.addEventListener("click", () => {
@@ -228,7 +228,6 @@ projectHeader.addEventListener("click", (event) => {
 		const optionWrapper = document.getElementById(
 			`wrapper-${projectTitleNoSpace}`
 		);
-		// console.log(optionWrapper);
 		const elementsToToggle = {
 			"shadow-panel__option-wrapper": optionWrapper,
 		};
@@ -246,3 +245,5 @@ projectHeader.addEventListener("click", (event) => {
 		console.log("add button");
 	}
 });
+
+// TODO add event listeners to every delete button in the shadow-panel__option-wrapper__button-wrapper__button
