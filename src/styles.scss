@@ -24,15 +24,8 @@ button:hover {
 	transition-duration: 0.3s;
 	transition-timing-function: ease;
 }
+
 /* Blocks, elements, modifiers */
-// .desktop-wrapper__side-panel {
-// 	display: flex;
-// 	flex-direction: column;
-// 	border: solid red 2px;
-// 	background-color: azure;
-// 	grid-row: span 2;
-// }
-// project-display__project-wrapper__project-options__wrapper
 .desktop-wrapper {
 	display: grid;
 	position: sticky;
@@ -73,7 +66,6 @@ button:hover {
 
 .side-panel {
 	&__title {
-		// font-size: x-large;
 		display: flex;
 		justify-content: flex-start;
 		font-family: Hammersmith One;
@@ -90,8 +82,6 @@ button:hover {
 		font-weight: bold;
 	}
 
-	// &__project-list-wrapper {
-	// }
 	&__form {
 		display: flex;
 		flex-direction: column;
@@ -100,24 +90,11 @@ button:hover {
 		&__label {
 			padding-top: 2.5px;
 		}
-		// 	&__input {
-		// 	}
-		// 	&__select {
-		// 		&__option {
-		// 		}
-		// 	}
-		// 	&__button {
-		// 	}
 	}
 
 	&__header {
 		padding-top: 2.5px;
 	}
-
-	// &__button-wrapper {
-	// 	&__button {
-	// 	}
-	// }
 }
 
 .project-display {
@@ -128,8 +105,8 @@ button:hover {
 		flex-direction: column;
 		&__button {
 			background-color: #d9d9d9bf;
-			padding-left: 2rem;
-			padding-right: 2rem;
+			max-height: 24px;
+			overflow: hidden;
 			font-size: 18px;
 			box-shadow: none;
 			width: 207px;
@@ -220,13 +197,11 @@ button:hover {
 	border-radius: 10px;
 
 	&--complete {
-		// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 		background-color: #a2caea;
 		transition-property: background-color;
 		transition-duration: 0.3s;
 		transition-timing-function: ease;
 	}
-	// TODO modify the below to only apply line through to the title and date headers.
 	&--complete > * {
 		opacity: 0.8;
 		text-decoration: line-through;
@@ -241,19 +216,6 @@ button:hover {
 		padding: 10px 10px 10px 10px;
 		position: relative;
 
-		// TODO Now that you're using icons to denote priority, you can delete the below modifiers.
-		// &--priority--high {
-		// 	background-color: red;
-		// }
-
-		// &--priority--medium {
-		// 	background-color: yellow;
-		// }
-
-		// &--priority--low {
-		// 	background-color: green;
-		// }
-
 		&__checkbox {
 			opacity: 0;
 			position: absolute;
@@ -265,12 +227,6 @@ button:hover {
 		}
 		&__checkbox:checked ~ &__span {
 			box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-			// box-shadow: none;
-			// background-color: #5089be;
-			// background-color: #ffffff;
-			// transition-property: background-color;
-			// transition-duration: 0.3s;
-			// transition-timing-function: ease;
 		}
 
 		// Custom checkbox styling
@@ -296,15 +252,9 @@ button:hover {
 	&__title__section {
 		padding: 10px 10px 10px 10px;
 		background-color: #a2caea;
-		// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 		margin: 10px 0px 10px 0px;
 		border: solid 0.1px rgba(119, 119, 139, 0.63);
-		// &--inner-shadow {
-		// 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-		// }
-		// &--complete {
-		// 	box-shadow: none;
-		// }
+
 		&__title {
 			&--hidden {
 				display: none;
@@ -324,18 +274,12 @@ button:hover {
 	&__date__section {
 		padding: 10px 10px 10px 10px;
 		background: #a2caea;
-		// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 		margin: 10px 0px 10px 0px;
 		display: flex;
 		justify-content: space-between;
 		height: -webkit-fill-available;
 		border: solid 0.1px rgba(119, 119, 139, 0.63);
-		// &--inner-shadow {
-		// 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-		// }
-		// &--complete {
-		// 	box-shadow: none;
-		// }
+
 		&__icon {
 			height: 30px;
 			margin: -5px 0px -5px 0px;
@@ -388,19 +332,6 @@ button:hover {
 		background-color: transparent;
 		height: -webkit-fill-available;
 
-		// TODO Now that you're using icons to denote priority, you can delete the below modifiers.
-		// &--priority--high {
-		// 	background-color: red;
-		// }
-
-		// &--priority--medium {
-		// 	background-color: yellow;
-		// }
-
-		// &--priority--low {
-		// 	background-color: green;
-		// }
-
 		&__button {
 			display: flex;
 			justify-content: center;
@@ -448,9 +379,7 @@ button:hover {
 }
 
 .project-display__project-wrapper {
-	// display: flex;
 	display: -webkit-box;
-	// grid-template-columns: 1fr 1fr;
 	&__project-panel {
 		// display: flex;
 	}
@@ -469,7 +398,6 @@ button:hover {
 		opacity: 0;
 	}
 	&__button-wrapper {
-		// padding-left: 5px;
 		display: flex;
 		justify-content: space-around;
 		width: 105px;
@@ -479,6 +407,9 @@ button:hover {
 			border: solid 0.5px;
 			font-size: 16px;
 			padding: 0px 2px 0px 2px;
+			&:hover {
+				background-color: white;
+			}
 		}
 	}
 }

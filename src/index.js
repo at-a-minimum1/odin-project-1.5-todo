@@ -9,15 +9,6 @@ window.onload = () => {
 	dom.updateMainPanel(projectData[0]);
 };
 
-// const projectList = document.getElementById("project-list");
-// projectList.addEventListener("change", (event) => {
-// 	// TODO delete the following console log statement
-// 	let currentProject = data.getCurrentProject();
-// 	dom.clearMainPanel();
-// 	dom.updateMainPanel(currentProject);
-// 	console.log(currentProject);
-// });
-
 const addTaskButton = document.getElementById("add-task");
 addTaskButton.addEventListener("click", (event) => {
 	event.preventDefault();
@@ -27,13 +18,6 @@ addTaskButton.addEventListener("click", (event) => {
 	dom.addToMainPanel(newTask);
 	dom.clearForm();
 });
-
-// const addProjectButton = document.getElementById("add-project");
-// addProjectButton.addEventListener("click", (event) => {
-// 	event.preventDefault();
-// 	data.addProject();
-// 	dom.addToProjectList();
-// });
 
 const projectDropdownButton = document.getElementById("project-dropdown");
 projectDropdownButton.addEventListener("click", () => {
@@ -200,13 +184,17 @@ resultsPanel.addEventListener("click", (event) => {
 		data.toggleComplete(taskId);
 	}
 });
+
 const projectHeader = document.getElementById("project-header");
 projectHeader.addEventListener("click", (event) => {
-	const newProjectInput = document.getElementById("input-project");
 	const newProjectButton = document.getElementById("add-project-button");
-	newProjectButton.addEventListener("click", () => {
-		console.log(newProjectInput.value);
-	});
+	if (event.target === newProjectButton) {
+		data.addProject();
+		const projectData = data.getProjectData();
+		dom.clearProjectList();
+		dom.instantiateProjectList(projectData);
+	}
+
 	if (
 		event.target.matches(
 			".project-display__project-wrapper__project-options__wrapper__button"
@@ -235,15 +223,19 @@ projectHeader.addEventListener("click", (event) => {
 	}
 	if (
 		event.target.matches(
-			".project-display__project-wrapper__project-options__wrapper__add-button"
+			".shadow-panel__option-wrapper__button-wrapper__button"
 		)
 	) {
-		data.addProject();
+		const projectTitle = event.target.value;
+		const projectTitleNoSpace = projectTitle.replace(/ /g, "");
+		const deleteBtn = document.getElementById(`${projectTitleNoSpace}-delete`);
+		if (event.target === deleteBtn) {
+			data.deleteProject(event.target.value);
+		}
+
+		console.log(event.target.value);
 		dom.clearProjectList();
 		const projectData = data.getProjectData();
 		dom.instantiateProjectList(projectData);
-		console.log("add button");
 	}
 });
-
-// TODO add event listeners to every delete button in the shadow-panel__option-wrapper__button-wrapper__button
