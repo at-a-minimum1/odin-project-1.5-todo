@@ -21,6 +21,8 @@ addTaskButton.addEventListener("click", (event) => {
 
 const projectDropdownButton = document.getElementById("project-dropdown");
 projectDropdownButton.addEventListener("click", () => {
+	const parentDiv = document.getElementById("hiddenProjectOptions");
+	dom.hideAllElements(parentDiv);
 	const projectOptions = document.getElementById("project-options");
 	const elementsToToggle = {
 		"project-display__project-wrapper__project-options": projectOptions,
@@ -212,6 +214,7 @@ projectHeader.addEventListener("click", (event) => {
 		// Expand the div to the right by making the dialogue box visible.
 		const projectTitle = event.target.value;
 		const projectTitleNoSpace = projectTitle.replace(/ /g, "");
+		const parentDiv = document.getElementById("hiddenProjectOptions");
 
 		const optionWrapper = document.getElementById(
 			`wrapper-${projectTitleNoSpace}`
@@ -219,6 +222,8 @@ projectHeader.addEventListener("click", (event) => {
 		const elementsToToggle = {
 			"shadow-panel__option-wrapper": optionWrapper,
 		};
+
+		dom.hideAllElements(parentDiv);
 		dom.toggleHideElement(elementsToToggle);
 	}
 	if (
@@ -233,9 +238,13 @@ projectHeader.addEventListener("click", (event) => {
 			data.deleteProject(event.target.value);
 		}
 
-		console.log(event.target.value);
 		dom.clearProjectList();
 		const projectData = data.getProjectData();
 		dom.instantiateProjectList(projectData);
 	}
 });
+
+// window.addEventListener('click', (e) => {
+//   if (e.target !== dialogBox && e.target !== projectButton) {
+//     dialogBox.style.display = 'none';
+//   }
