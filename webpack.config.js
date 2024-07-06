@@ -7,8 +7,8 @@ module.exports = {
 	entry: "./src/index.js",
 	output: {
 		filename: "main.js",
-		path: path.resolve(__dirname, "dist"),
-		publicPath: "/odin-project-1.5-todo/dist/",
+		path: path.resolve(__dirname, "docs"),
+		publicPath: "/odin-project-1.5-todo/docs/",
 	},
 	module: {
 		rules: [
