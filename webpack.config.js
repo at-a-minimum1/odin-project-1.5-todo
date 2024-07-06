@@ -28,7 +28,7 @@ module.exports = {
 			template: "./docs/index.html",
 		}),
 		new CleanWebpackPlugin({
-			cleanOnceBeforeBuildPatterns: ["dist"],
+			cleanOnceBeforeBuildPatterns: ["docs"],
 		}),
 	],
 };
