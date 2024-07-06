@@ -55,9 +55,9 @@ importantButton.addEventListener("click", () => {
 	handleFilterClick("Important");
 });
 
-function handleFilterClick(fliterBy) {
-	let filteredTasks = data.filterTasks(fliterBy);
-	dom.updateProjectHeader(fliterBy);
+function handleFilterClick(filterBy) {
+	let filteredTasks = data.filterTasks(filterBy);
+	dom.updateProjectHeader(filterBy);
 	dom.clearMainPanel();
 	dom.updateMainPanel(filteredTasks);
 }

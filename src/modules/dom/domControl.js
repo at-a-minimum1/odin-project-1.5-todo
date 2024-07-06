@@ -212,12 +212,6 @@ export function clearForm() {
 // Hides all the open divs inside a parent div.
 export function hideAllElements(parentDiv) {
 	for (const child of parentDiv.children) {
-		// if (!child.classList.contains("hidden")) {
-		// 	const className = child.classList.item(0);
-		// 	console.log(className);
-		// 	console.log(child.classList);
-		// 	child.classList.toggle(`${className}--hidden`);
-		// }
 		if (child.classList.length < 2) {
 			const className = child.classList.item(0);
 			child.classList.toggle(`${className}--hidden`);

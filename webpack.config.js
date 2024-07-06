@@ -8,7 +8,7 @@ module.exports = {
 	output: {
 		filename: "main.js",
 		path: path.resolve(__dirname, "dist"),
-		publicPath: "/odin-project-1.5-todo/dist/", // Add the correct public path here
+		publicPath: "/odin-project-1.5-todo/dist/",
 	},
 	module: {
 		rules: [

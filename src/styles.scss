@@ -102,11 +102,12 @@ button:hover {
 		border-radius: 2px;
 	}
 	&__button-wrapper__button {
-		margin-top: 4px;
+		margin-top: 10px;
 		margin-left: 2px;
 		padding: 0px 2px 0px 2px;
 		border-radius: 2px;
 		background-color: rgb(255 213 215);
+		font-family: "Hammersmith One";
 	}
 	&__header {
 		padding-top: 2.5px;
@@ -396,9 +397,9 @@ button:hover {
 
 .project-display__project-wrapper {
 	display: -webkit-box;
-	&__project-panel {
-		// display: flex;
-	}
+	// &__project-panel {
+	// 	// display: flex;
+	// }
 	&__shadow-panel {
 		height: 16px;
 	}
